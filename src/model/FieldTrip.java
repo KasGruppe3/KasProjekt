@@ -9,4 +9,6 @@ public class FieldTrip {
     private String description;
     private double price;
     private boolean hasLunch;
+
+    // kenneth g. test
 }
