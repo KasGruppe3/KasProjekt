@@ -61,4 +61,9 @@ public class Hotel {
     public void removeExtra(Extra extra) {
     	extraOffers.remove(extra);
     }
+    
+    @Override
+    public String toString() {
+    	return "Hotel navn: " + this.name + ", adresse: " + this.address + ", single rum pris: " + this.priceSingle + ", double rum pris: " + this.priceDouble + ", antal extra offers: " + this.extraOffers.size();
+    }
 }
