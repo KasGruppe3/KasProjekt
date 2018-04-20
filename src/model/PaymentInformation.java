@@ -7,15 +7,26 @@ public class PaymentInformation {
 
     /**
      * @param registrationForm
+     *            The registration form to calculate billing information from
      */
     public PaymentInformation(RegistrationForm registrationForm) {
         this.registrationForm = registrationForm;
     }
 
+    /**
+     * Returns the registration form associated with this payment information
+     *
+     * @return The associated registration form
+     */
     public RegistrationForm getRegistrationForm() {
         return registrationForm;
     }
 
+    /**
+     * Calculates the total price for the stay at the conference and hotel
+     *
+     * @return total cost of the conference and hotel
+     */
     public double calculateInvoicePrice() {
         return calculateConferencePrice() + calculateHotelPrice();
     }
