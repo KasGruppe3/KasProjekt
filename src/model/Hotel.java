@@ -55,8 +55,7 @@ public class Hotel {
     }
     
     public ArrayList<Extra> getExtra() {
-    	Arraylist<Extra> extra = extraOffers.clone();
-    	return extra;
+    	return new ArrayList<Extra>(extraOffers);
     }
     
     public void removeExtra(Extra extra) {
