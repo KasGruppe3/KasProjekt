@@ -1,6 +1,6 @@
 package model;
 
-public class Services {
+public class Extra {
     private String name;
     private double price;
     private String description;
