@@ -2,6 +2,9 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Iterator;
 
 public class Conference {
     private String name;
@@ -9,8 +12,8 @@ public class Conference {
     private LocalDate date;
     private int timeSpan;
     private double price;
-    private ArrayList<FieldTrip> fieldTrip = new ArrayList<FieldTrip>();
-    private ArrayList<RegistrationForm> registrationForm = new ArrayList<RegistrationForm>();
+    private ArrayList<FieldTrip> fieldTrips = new ArrayList<FieldTrip>();
+    private ArrayList<RegistrationForm> registrationForms = new ArrayList<RegistrationForm>();
     
 	
     public Conference(String name, String location, LocalDate date, int timeSpan, double price) {
@@ -63,11 +66,39 @@ public class Conference {
     
     
 	
-	public void printListHotel() {
+	public void printHotelList() {
 		
-		for (RegistrationForm r : registrationForm) {
-			if (r.get)
+		Hashtable<Hotel, ArrayList<Attendant>> hotel = new Hashtable();
+		
+		for (RegistrationForm r : registrationForms) {
+			if ( r.getHotel() != null) {
+				ArrayList<Attendant> list = hotel.get(r.getHotel());
+				if (list == null) {
+					list = new ArrayList<>();
+					hotel.put(r.getHotel(), list);
+				}
+			
+				list.add(r.getAttendant());
+			}
 		}
+
+		System.out.println("Hotel information:");
+		
+		Enumeration<Hotel> keys = hotel.keys();
+		while(keys.hasMoreElements()) {
+			Hotel h = keys.nextElement();
+			ArrayList<Attendant> list = hotel.get(h);
+			System.out.println(h.getName());
+			for (Attendant a : list) {
+				
+				System.out.println(a); //opdater med Attendant tekst som skal sendes til hotel
+			}
+		}
+		
+	}
+	
+	
+	public void printConferenceList() {
 		
 	}
     
