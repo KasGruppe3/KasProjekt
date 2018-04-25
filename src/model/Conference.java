@@ -1,10 +1,10 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Iterator;
 
 public class Conference {
     private String name;
@@ -111,7 +111,7 @@ public class Conference {
 			System.out.println("Telefon: " + a.getAttendant().getTlfNumber());
 			System.out.println("Har ledsager: " + a.getAttendant().getHasCompanion());
 			
-			if(a.getAttendant().hasCompanion) {
+			if(a.getAttendant().getHasCompanion()) {
 				System.out.println(a.getAttendant().getCompanion().getName());
 			}			
 			System.out.println("----------------------------------------");
@@ -131,4 +131,26 @@ public class Conference {
 			System.out.println("---------------------------------------------");
 		}
 	}
+	
+	public void addRegistrationForm(RegistrationForm registrationForm) {
+		this.registrationForms.add(registrationForm);
+	}
+	
+	public void removeRegistrationForm(RegistrationForm registrationForm) {
+		this.registrationForms.remove(registrationForm);
+	}
+	
+	public FieldTrip addFieldTrip(LocalTime meetingTime, LocalDate date, String description, double price, boolean hasLunch) {
+		
+		FieldTrip f = new FieldTrip(date, meetingTime, description, price, hasLunch);
+		
+		fieldTrips.add(f);
+		
+		return f;
+	}
+	
+	public void removeFieldTrip(FieldTrip fieldTrip) {
+		fieldTrips.remove(fieldTrip);
+	}
+	
 }
