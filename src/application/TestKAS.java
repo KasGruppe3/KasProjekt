@@ -46,7 +46,6 @@ public class TestKAS {
         // Opret registrering
         RegistrationForm reg = new RegistrationForm(conference, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
                 false, "", att, null, null);
-        conference.addRegistrationForm(reg);
 
         // Beregn og test pris
         PaymentInformation payment = new PaymentInformation(reg);
@@ -63,7 +62,6 @@ public class TestKAS {
         Hotel hotel = hotels[0];
         RegistrationForm reg = new RegistrationForm(conference, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
                 false, "", att, hotel, null);
-        conference.addRegistrationForm(reg);
 
         // Beregn og test pris
         PaymentInformation payment = new PaymentInformation(reg);
@@ -89,7 +87,6 @@ public class TestKAS {
         // Opret registrering
         RegistrationForm reg = new RegistrationForm(conference, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
                 false, "", att, hotel, extras);
-        conference.addRegistrationForm(reg);
 
         // Beregn og test pris
         PaymentInformation payment = new PaymentInformation(reg);
@@ -115,7 +112,6 @@ public class TestKAS {
         // Opret registrering
         RegistrationForm reg = new RegistrationForm(conference, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
                 true, "", att, hotel, extras);
-        conference.addRegistrationForm(reg);
 
         // Beregn og test pris
         PaymentInformation payment = new PaymentInformation(reg);
