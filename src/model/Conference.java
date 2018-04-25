@@ -133,7 +133,7 @@ public class Conference {
 	}
 	
 	public void addRegistrationForm(RegistrationForm registrationForm) {
-		this.registrationForms.add(registrationForm);
+		this.registrationForms.add(registrationForm);a
 	}
 	
 	public void removeRegistrationForm(RegistrationForm registrationForm) {
