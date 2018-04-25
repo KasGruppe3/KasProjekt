@@ -112,7 +112,7 @@ public class Conference {
 			}			
 			System.out.println("----------------------------------------");
 			
-		}a
+		}
 		
 	}
     

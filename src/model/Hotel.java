@@ -1,7 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-a
+
 public class Hotel {
     private String name;
     private String address;
