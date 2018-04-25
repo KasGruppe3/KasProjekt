@@ -1,16 +1,16 @@
 package model;
 
 public class Person {
-    private String navn;
+    private String name;
     
-    public Person(String navn) {
-    	this.navn = navn;
+    public Person(String name) {
+    	this.name = name;
     }
     
-    public String getNavn() {
-		return navn;
+    public String getName() {
+		return name;
 	}
-    public void setNavn(String navn) {
-		this.navn = navn;
+    public void setNavn(String name) {
+		this.name = name;
 	}
 }
