@@ -40,7 +40,7 @@ public class KASunittest {
     @Test
     public void testFinnMadsen() {
         // Opret deltager
-        Attendant att = new Attendant("Finn Madsen", "dk", "12233445");
+        Attendant att = new Attendant("Finn Madsen", "dk", "12233445", "Telia");
 
         // Opret registrering
         RegistrationForm reg = new RegistrationForm(conference, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
@@ -55,7 +55,7 @@ public class KASunittest {
     @Test
     public void testNielsPetersen() {
         // Opret deltager
-        Attendant att = new Attendant("Niels Petersen", "dk", "12345678");
+        Attendant att = new Attendant("Niels Petersen", "dk", "12345678", "Telia");
 
         // Opret registrering
         Hotel hotel = hotels[0];
@@ -96,7 +96,7 @@ public class KASunittest {
     @Test
     public void testLoneJensen() {
         // Opret deltager
-        Attendant att = new Attendant("Lone Jensen", "dk", "22334455");
+        Attendant att = new Attendant("Lone Jensen", "dk", "22334455", "Telia");
         Companion comp = att.createCompanion("Jan Madsen");
 
         // Meld til udflugter
