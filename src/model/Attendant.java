@@ -8,6 +8,8 @@ public class Attendant extends Person {
     private boolean hasCompanion;
     private boolean hasCompany;
     
+    
+    
     public Attendant(String name, String address, String tlfNumber, String company, boolean hasCompanion, boolean hasCompany) {
 		super(name);
 		this.address = address;
@@ -53,6 +55,8 @@ public class Attendant extends Person {
     public void setHasCompany(boolean hasCompany) {
 		this.hasCompany = hasCompany;
 	}
-    
+    private void createCompanion(String name) {
+		Companion companion = new Companion(name, this);
+	}
     
 }
