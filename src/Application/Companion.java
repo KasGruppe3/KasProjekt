@@ -1,4 +1,4 @@
-package model;
+package Application;
 
 public class Companion extends Person {
 	private Attendant attendant;
