@@ -1,4 +1,4 @@
-package model;
+package application;
 
 public class Extra {
     private String name;

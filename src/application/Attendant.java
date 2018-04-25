@@ -1,4 +1,4 @@
-package model;
+package application;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -59,15 +59,14 @@ public class Attendant extends Person {
     	} return false;
 	}
 	
-    public void createCompanion(String name) {
-		Companion companion = new Companion(name, this);
-		companion.setAttendant(this);
+    public Companion createCompanion(String name) {
+		companion = new Companion(name, this);
 		return companion;
 	}
     
     public RegistrationForm addRegistrationForm(Conference conference, LocalDate arrivalDate, LocalDate leavingDate, boolean isSpeaker,
             String comment, Attendant attendant, Hotel hotel, ArrayList<Extra> extraChoices) {
-    	RegistrationForm registrationForm = new RegistrationForm(conference, arrivalDate, leavingDate, isSpeaker, comment, this, hotel, extraChoices);
+    	registrationForm = new RegistrationForm(conference, arrivalDate, leavingDate, isSpeaker, comment, this, hotel, extraChoices);
     	registrationForms.add(registrationForm);
     	return registrationForm;
     }
