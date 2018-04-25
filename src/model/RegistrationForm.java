@@ -2,7 +2,7 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-a
+
 public class RegistrationForm {
     private LocalDate arrivalDate;
     private LocalDate leavingDate;

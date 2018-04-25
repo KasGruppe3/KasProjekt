@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-a
+
 /**
  * Describes a fieldtrip that is offered by a conference.
  * 
