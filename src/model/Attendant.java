@@ -41,5 +41,18 @@ public class Attendant extends Person {
     public void setCompanion(Companion companion) {
 		this.companion = companion;
 	}
+    public boolean getHasCompanion() {
+    	return hasCompanion;
+    }
+    public boolean getHasCompany() {
+    	return hasCompany;
+    }
+    public void setHasCompanion(boolean hasCompanion) {
+		this.hasCompanion = hasCompanion;
+	}
+    public void setHasCompany(boolean hasCompany) {
+		this.hasCompany = hasCompany;
+	}
+    
     
 }
