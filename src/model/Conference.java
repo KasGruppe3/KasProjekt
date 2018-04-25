@@ -109,9 +109,9 @@ public class Conference {
 			System.out.println("Navn: " + a.getAttendant().getName());
 			System.out.println("Adresse: " + a.getAttendant().getAddress());
 			System.out.println("Telefon: " + a.getAttendant().getTlfNumber());
-			System.out.println("Har ledsager: " + a.getAttendant().getHasCompanion());
+			System.out.println("Har ledsager: " + a.getAttendant().hasCompanion());
 			
-			if(a.getAttendant().getHasCompanion()) {
+			if(a.getAttendant().hasCompanion()) {
 				System.out.println(a.getAttendant().getCompanion().getName());
 			}			
 			System.out.println("----------------------------------------");

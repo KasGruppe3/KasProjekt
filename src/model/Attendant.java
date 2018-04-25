@@ -12,12 +12,11 @@ public class Attendant extends Person {
     ArrayList<RegistrationForm> registrationForms= new ArrayList<>();
     
     
-    public Attendant(String name, String address, String tlfNumber, String company, Companion companion) {
+    public Attendant(String name, String address, String tlfNumber, String company) {
 		super(name);
 		this.address = address;
 		this.tlfNumber = tlfNumber;
 		this.company = company;
-		this.companion = companion;
 	}
     
     public String getAddress() {
