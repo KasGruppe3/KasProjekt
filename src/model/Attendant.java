@@ -5,6 +5,6 @@ public class Attendant extends Person {
     private String tlfNumber;
     private boolean hasCompany;
     
-    
+    a
     
 }

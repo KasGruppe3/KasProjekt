@@ -40,5 +40,5 @@ public class Extra {
 		return "Tilvalg navn: " + this.name + ", pris: " + this.price + ", beskrivelse: " + this.description;
 	}
     
-	
+	a
 }

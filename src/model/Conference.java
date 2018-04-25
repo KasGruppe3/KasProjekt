@@ -105,16 +105,14 @@ public class Conference {
 			System.out.println("Navn: " + a.getAttendant().getName());
 			System.out.println("Adresse: " + a.getAttendant().getAdress());
 			System.out.println("Telefon: " + a.getAttendant().getTelephone());
-			System.out.println("Har ledsager: " + a.getAttendant().hasAttendant());
+			System.out.println("Har ledsager: " + a.getAttendant().hasCompanion());
 			
-			if(a.getAttendant().hasattendant) {
-				
-			}
-			
-			
+			if(a.getAttendant().hasCompanion) {
+				System.out.println(a.getAttendant().getCompanion().getName());
+			}			
 			System.out.println("----------------------------------------");
 			
-		}
+		}a
 		
 	}
     
