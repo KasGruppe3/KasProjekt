@@ -1,13 +1,15 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Attendant extends Person {
-    private String address;
+	private String address;
     private String tlfNumber;
     private String company;
     private Companion companion;
     private boolean hasCompanion;
     private boolean hasCompany;
-    
+    ArrayList<RegistrationForm> registrationForms= new ArrayList<>();
     
     
     public Attendant(String name, String address, String tlfNumber, String company, boolean hasCompanion, boolean hasCompany) {
@@ -55,8 +57,11 @@ public class Attendant extends Person {
     public void setHasCompany(boolean hasCompany) {
 		this.hasCompany = hasCompany;
 	}
-    private void createCompanion(String name) {
+    public void createCompanion(String name) {
 		Companion companion = new Companion(name, this);
 	}
+    public void addRegistrationForm() {
+    	
+    }
     
 }
