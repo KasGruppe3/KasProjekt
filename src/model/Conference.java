@@ -91,7 +91,7 @@ public class Conference {
 			System.out.println(h.getName());
 			for (Attendant a : list) {
 				
-				System.out.println(); //opdater med Attendant tekst som skal sendes til hotel
+				System.out.println(a); //opdater med Attendant tekst som skal sendes til hotel
 			}
 		}
 		
@@ -99,6 +99,22 @@ public class Conference {
 	
 	
 	public void printConferenceList() {
+		
+		for(RegistrationForm a : registrationForms) {
+			System.out.println("----------------------------------------");
+			System.out.println("Navn: " + a.getAttendant().getName());
+			System.out.println("Adresse: " + a.getAttendant().getAdress());
+			System.out.println("Telefon: " + a.getAttendant().getTelephone());
+			System.out.println("Har ledsager: " + a.getAttendant().hasAttendant());
+			
+			if(a.getAttendant().hasattendant) {
+				
+			}
+			
+			
+			System.out.println("----------------------------------------");
+			
+		}
 		
 	}
     
