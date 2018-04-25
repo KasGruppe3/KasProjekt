@@ -7,17 +7,17 @@ import storage.Storage;
 public class Service {
 
 	
-	//Conference service     //ikke færdiggjort
+	//Conference service     //ikke fï¿½rdiggjort
 	//--------------------------------------------------------------------------------------------------------------------------------------------
 	
 	public static Conference createConference(String name, String location, LocalDate date, int timeSpan, double price) {
 		Conference c = new Conference(name, location, date, timeSpan, price);
-		storage.addConference(c);
+		Storage.addConference(c);
 		return c;
 	}
 	
 	public static void removeConference(Conference conference) {
-		storage.removeConference(conference);
+		Storage.removeConference(conference);
 	}
 	
 	public static void updateConference(Conference conference, String name, String location, LocalDate date, int timeSpan, double price) {
@@ -29,7 +29,7 @@ public class Service {
 	}
 	
 	public static ArrayList<Conference> getConferences(){
-		storage.getConferences();
+		return Storage.getConferences();
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------------------------
