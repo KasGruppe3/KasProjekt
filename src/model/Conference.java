@@ -72,7 +72,7 @@ public class Conference {
 	
 	public void printHotelList() {
 		
-		Hashtable<Hotel, ArrayList<Attendant>> hotel = new Hashtable();
+		Hashtable<Hotel, ArrayList<Attendant>> hotel = new Hashtable<Hotel, ArrayList<Attendant>>();
 		
 		for (RegistrationForm r : registrationForms) {
 			if ( r.getHotel() != null) {
