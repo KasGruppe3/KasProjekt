@@ -146,7 +146,7 @@ public class Conference {
 		
 		fieldTrips.add(f);
 		
-		return f;
+		return f;a
 	}
 	
 	public void removeFieldTrip(FieldTrip fieldTrip) {
