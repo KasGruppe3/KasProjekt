@@ -1,4 +1,4 @@
-package Application;
+package application;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -46,11 +46,7 @@ public class Attendant extends Person {
     public Companion getCompanion() {
 		return companion;
 	}
-    
-    public void setCompanion(Companion companion) {
-		this.companion = companion;
-	}
-    
+	    
     public boolean hasCompanion() {
     	if(companion != null) {
     		return true;
@@ -61,10 +57,12 @@ public class Attendant extends Person {
     	if(company != null) {
     		return true;
     	} return false;
-    }
-        
+	}
+	
     public void createCompanion(String name) {
 		Companion companion = new Companion(name, this);
+		companion.setAttendant(this);
+		return companion;
 	}
     
     public RegistrationForm addRegistrationForm(Conference conference, LocalDate arrivalDate, LocalDate leavingDate, boolean isSpeaker,
@@ -73,5 +71,4 @@ public class Attendant extends Person {
     	registrationForms.add(registrationForm);
     	return registrationForm;
     }
-    
-}
+}    
