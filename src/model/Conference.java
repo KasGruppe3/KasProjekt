@@ -63,6 +63,10 @@ public class Conference {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	public ArrayList<FieldTrip> getFieldTrips(){
+		return fieldTrips;
+	}
     
     
 	
@@ -103,9 +107,9 @@ public class Conference {
 		for(RegistrationForm a : registrationForms) {
 			System.out.println("----------------------------------------");
 			System.out.println("Navn: " + a.getAttendant().getName());
-			System.out.println("Adresse: " + a.getAttendant().getAdress());
-			System.out.println("Telefon: " + a.getAttendant().getTelephone());
-			System.out.println("Har ledsager: " + a.getAttendant().hasCompanion());
+			System.out.println("Adresse: " + a.getAttendant().getAddress());
+			System.out.println("Telefon: " + a.getAttendant().getTlfNumber());
+			System.out.println("Har ledsager: " + a.getAttendant().getHasCompanion());
 			
 			if(a.getAttendant().hasCompanion) {
 				System.out.println(a.getAttendant().getCompanion().getName());
@@ -116,4 +120,15 @@ public class Conference {
 		
 	}
     
+	
+	public void printListFieldTrip() {
+		for (FieldTrip f : fieldTrips) {
+			System.out.println("---------------------------------------------");
+			System.out.println("Udflugts beskrivelse: " + f.getDescription() + ", dato: " + f.getDate() + ", middag inklusiv: " + f.isHasLunch() + ", pris: " + f.getPrice());
+			for (Companion c : f.getCompanions()) {
+				System.out.println("navn: " + c.getName());
+			}
+			System.out.println("---------------------------------------------");
+		}
+	}
 }
