@@ -71,9 +71,8 @@ public class KASunittest {
     @Test
     public void testPeterSommer() {
         // Opret deltager og ledsager
-        Attendant att = new Attendant("Peter Sommer", "dk", "12233445");
-        Companion comp = new Companion("Mie Sommer", att);
-        att.setCompanion(comp);
+        Attendant att = new Attendant("Peter Sommer", "dk", "12233445", "firma");
+        Companion comp = att.createCompanion("Mie Sommer");
 
         // Meld til udflugter
         fieldtrips[1].addCompanion(comp); // egeskov
@@ -98,8 +97,7 @@ public class KASunittest {
     public void testLoneJensen() {
         // Opret deltager
         Attendant att = new Attendant("Lone Jensen", "dk", "22334455");
-        Companion comp = new Companion("Jan Madsen", att);
-        att.setCompanion(comp);
+        Companion comp = att.createCompanion("Jan Madsen");
 
         // Meld til udflugter
         fieldtrips[0].addCompanion(comp); // byrundtur
