@@ -12,6 +12,7 @@ public class RegistrationForm {
     private Hotel hotel;
     private ArrayList<Extra> extraChoices;
     private Conference conference;
+    private Companion companion;
 
     /**
      * @param conference
@@ -108,5 +109,37 @@ public class RegistrationForm {
 
     public Conference getConference() {
         return conference;
+    }
+
+    public Companion getCompanion() {
+        return companion;
+    }
+
+    public boolean hasCompanion() {
+        if (companion != null) {
+            return true;
+        }
+        return false;
+    }
+
+    public Companion createCompanion(String name) {
+        if (companion != null) {
+            removeCompanion();
+        }
+
+        companion = new Companion(name, getAttendant());
+        return companion;
+    }
+
+    public void removeCompanion() {
+        if (companion != null) {
+            // Fjern ledsageren fra alle turene
+            ArrayList<FieldTrip> trips = conference.getFieldTrips();
+            for (FieldTrip trip : trips) {
+                trip.removeCompanion(companion);
+            }
+
+            companion = null;
+        }
     }
 }

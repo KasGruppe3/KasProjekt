@@ -1,14 +1,11 @@
 package application;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Attendant extends Person {
     private String address;
     private String tlfNumber;
     private String company;
-    private Companion companion;
-    private RegistrationForm registrationForm;
     ArrayList<RegistrationForm> registrationForms = new ArrayList<>();
 
     public Attendant(String name, String address, String tlfNumber, String company) {
@@ -47,38 +44,6 @@ public class Attendant extends Person {
             return true;
         }
         return false;
-    }
-
-    public Companion getCompanion() {
-        return companion;
-    }
-
-    public boolean hasCompanion() {
-        if (companion != null) {
-            return true;
-        }
-        return false;
-    }
-
-    public Companion createCompanion(String name) {
-        if (companion != null) {
-            removeCompanion();
-        }
-
-        companion = new Companion(name, this);
-        return companion;
-    }
-
-    public void removeCompanion() {
-        if (companion != null) {
-            // Fjern ledsageren fra alle turene
-            ArrayList<FieldTrip> trips = registrationForm.getConference().getFieldTrips();
-            for (FieldTrip trip : trips) {
-                trip.removeCompanion(companion);
-            }
-
-            companion = null;
-        }
     }
 
     public void addRegistrationForm(RegistrationForm registrationForm) {
