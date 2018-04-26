@@ -3,8 +3,6 @@ package application;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
 
 public class Conference {
     private String name;
@@ -96,7 +94,7 @@ public class Conference {
      */
     public void removeRegistrationForm(RegistrationForm registrationForm) {
         // Fjern ledsageren fra turene
-        Companion companion = registrationForm.getAttendant().getCompanion();
+        Companion companion = registrationForm.getCompanion();
         for (FieldTrip fieldTrip : fieldTrips) {
             fieldTrip.removeCompanion(companion);
         }

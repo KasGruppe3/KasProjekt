@@ -48,7 +48,7 @@ public class PaymentInformation {
 
         // Calculate the price of single/double room
         double price = 0.0;
-        if (registrationForm.getAttendant().hasCompanion()) {
+        if (registrationForm.hasCompanion()) {
             price += hotel.getPriceDouble() * days;
         } else {
             price += hotel.getPriceSingle() * days;
@@ -73,7 +73,7 @@ public class PaymentInformation {
      */
     public double calculateConferencePrice() {
         Conference conference = registrationForm.getConference();
-        Companion companion = registrationForm.getAttendant().getCompanion();
+        Companion companion = registrationForm.getCompanion();
 
         // Calculate the price of the fieldtrips
         double totalPrice = 0.0;
