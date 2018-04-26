@@ -88,6 +88,13 @@ public class Conference {
     }
 
     public void removeRegistrationForm(RegistrationForm registrationForm) {
+        // Fjern ledsageren fra turene
+        Companion companion = registrationForm.getAttendant().getCompanion();
+        for (FieldTrip fieldTrip : fieldTrips) {
+            fieldTrip.removeCompanion(companion);
+        }
+
+        // Fjern registreringen
         this.registrationForms.remove(registrationForm);
     }
 
