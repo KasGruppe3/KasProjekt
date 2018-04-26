@@ -122,6 +122,15 @@ public class RegistrationForm {
         return false;
     }
 
+    /**
+     * Creates a companion for the attendant of the conference. If a companion
+     * already exists, it will be removed from any fieldtrips they would have
+     * attended.
+     *
+     * @param name
+     *            The name of the companion
+     * @return The created companion instance
+     */
     public Companion createCompanion(String name) {
         if (companion != null) {
             removeCompanion();
@@ -131,6 +140,10 @@ public class RegistrationForm {
         return companion;
     }
 
+    /**
+     * Removes a companion from the registration. Will also remove it from all
+     * fieldtrips.
+     */
     public void removeCompanion() {
         if (companion != null) {
             // Fjern ledsageren fra alle turene
