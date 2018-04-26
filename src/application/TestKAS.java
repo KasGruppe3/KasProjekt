@@ -82,7 +82,7 @@ public class TestKAS {
         // Find hotel info
         Hotel hotel = hotels[0];
         ArrayList<Extra> extras = new ArrayList<>();
-        extras.add(hotel.getExtra().get(0)); // wifi
+        extras.add(hotel.getExtras().get(0)); // wifi
 
         // Opret registrering
         RegistrationForm reg = conference.addRegistrationForm(att, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
@@ -107,7 +107,7 @@ public class TestKAS {
         // Find hotel info
         Hotel hotel = hotels[0];
         ArrayList<Extra> extras = new ArrayList<>();
-        extras.add(hotel.getExtra().get(0)); // wifi
+        extras.add(hotel.getExtras().get(0)); // wifi
 
         // Opret registrering
         RegistrationForm reg = conference.addRegistrationForm(att, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
