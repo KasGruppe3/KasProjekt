@@ -71,13 +71,8 @@ public class TestKAS {
 
     @Test
     public void testPeterSommer() {
-        // Opret deltager og ledsager
+        // Opret deltager
         Attendant att = new Attendant("Peter Sommer", "dk", "12233445", "firma");
-        Companion comp = att.createCompanion("Mie Sommer");
-
-        // Meld til udflugter
-        fieldtrips[1].addCompanion(comp); // egeskov
-        fieldtrips[2].addCompanion(comp); // trapholt
 
         // Find hotel info
         Hotel hotel = hotels[0];
@@ -87,6 +82,11 @@ public class TestKAS {
         // Opret registrering
         RegistrationForm reg = conference.addRegistrationForm(att, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
                 false, "", att, hotel, extras);
+
+        // Tilføj ledsager og meld til udflugter
+        Companion comp = reg.createCompanion("Mie Sommer");
+        fieldtrips[1].addCompanion(comp); // egeskov
+        fieldtrips[2].addCompanion(comp); // trapholt
 
         // Beregn og test pris
         PaymentInformation payment = new PaymentInformation(reg);
@@ -98,11 +98,6 @@ public class TestKAS {
     public void testLoneJensen() {
         // Opret deltager
         Attendant att = new Attendant("Lone Jensen", "dk", "22334455", "Telia");
-        Companion comp = att.createCompanion("Jan Madsen");
-
-        // Meld til udflugter
-        fieldtrips[0].addCompanion(comp); // byrundtur
-        fieldtrips[1].addCompanion(comp); // egeskov
 
         // Find hotel info
         Hotel hotel = hotels[0];
@@ -112,6 +107,11 @@ public class TestKAS {
         // Opret registrering
         RegistrationForm reg = conference.addRegistrationForm(att, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
                 true, "", att, hotel, extras);
+
+        // Opret ledsager og meld til udflugter
+        Companion comp = reg.createCompanion("Jan Madsen");
+        fieldtrips[0].addCompanion(comp); // byrundtur
+        fieldtrips[1].addCompanion(comp); // egeskov
 
         // Beregn og test pris
         PaymentInformation payment = new PaymentInformation(reg);
