@@ -43,6 +43,12 @@ public class MainApp extends Application {
 
 	    private Button btnAttending;
 	    private Button btnAdmin;
+	    private Button btnCancel;
+	    private Button btnHelp;
+	    private Alert alarm;
+	    
+	    private AttendantWindow attendantWindow;
+		private AdminWindow adminWindow;
 	    // -------------------------------------------------------------------------
 
 	    private void initContent(GridPane pane) {
@@ -66,13 +72,48 @@ public class MainApp extends Application {
         btnAttending.setPrefHeight(100);
         btnAttending.setPrefWidth(400);
         btnAttending.setFont(Font.font(null, FontWeight.BOLD, 25));
-//        btnAttending.setOnAction(event -> xxx());  // - tilføj action
+        btnAttending.setOnAction(event -> attendantAction());
         
         btnAdmin = new Button("Admin");
         frontPage.add(btnAdmin, 1, 2);
         btnAdmin.setPrefHeight(100);
         btnAdmin.setPrefWidth(400);
         btnAdmin.setFont(Font.font(null, FontWeight.BOLD, 25));
-//        btnAdmin.setOnAction(event -> xxx);  // - tilføj action
+        btnAdmin.setOnAction(event -> adminAction);  // - tilføj action
+        
+        btnCancel = new Button("Cancel");
+        pane.add(btnCancel, 1, 3);
+        btnCancel.setOnAction(event -> closeWindow());
+	    
+	    
+	    btnHelp = new Button("Help");
+        pane.add(btnHelp, 0, 3);
+        btnHelp.setOnAction(event -> helpWindow());
 	    }
+
+	
+	    
+	 // -----------------------------------------------------
+		// Button actions
+
+		private void attendantAction() {
+			attendantWindow.show();
+		}
+		private void adminAction() {
+			adminWindow.show();
+		}
+		public void closeWindow() {
+		    System.exit(0);
+		}
+		
+		public void helpWindow() {
+			alarm = new Alert(AlertType.INFORMATION);
+
+            alarm.setTitle("Help Window");
+            alarm.setHeaderText("Press a button");
+            alarm.setContentText("Press Attending a conferrence if you are attending a conference.\nOr Admin if you are part of the conferrence team.");
+
+            alarm.showAndWait();
+
+}
 }
