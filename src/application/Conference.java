@@ -73,24 +73,24 @@ public class Conference {
 
     public RegistrationForm addRegistrationForm(Attendant att, LocalDate arrivalDate, LocalDate leavingDate,
             boolean isSpeaker, String comment, Attendant attendant, Hotel hotel, ArrayList<Extra> extraChoices) {
-        // Opret registreringen
+        // Create the registration instance
         RegistrationForm registrationForm = new RegistrationForm(this, arrivalDate, leavingDate, isSpeaker, comment,
                 att, hotel, extraChoices);
 
-        // Gem den i vores liste
+        // Save it in our list
         registrationForms.add(registrationForm);
 
-        // Tilføj den til deltagerens liste
+        // Add it to the attendants list
         att.addRegistrationForm(registrationForm);
 
-        // Returner den
+        // Return it
         return registrationForm;
     }
 
     /**
      * Remove a registration from the conference.
      * This will also remove the companion from fieldtrips
-     * 
+     *
      * @param registrationForm
      *            the registration to remove
      */
