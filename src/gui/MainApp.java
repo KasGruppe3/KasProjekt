@@ -35,6 +35,10 @@ public class MainApp extends Application {
 	        stage.setTitle("KAS");
 	        GridPane pane = new GridPane();
 	        initContent(pane);
+	        
+	        attendantWindow = new AttendantWindow("Attendants", stage);
+	        adminWindow = new AdminWindow("Admin", stage);
+	        
 	        Scene scene = new Scene(pane);
 	        stage.setScene(scene);
 	        stage.setResizable(false);
@@ -47,8 +51,9 @@ public class MainApp extends Application {
 	    private Button btnHelp;
 	    private Alert alarm;
 	    
-	    private AttendantWindow attendantWindow;
 		private AdminWindow adminWindow;
+		private AttendantWindow attendantWindow;
+		
 	    // -------------------------------------------------------------------------
 
 	    private void initContent(GridPane pane) {
@@ -63,9 +68,6 @@ public class MainApp extends Application {
         frontPage.setPadding(new Insets(10));
         frontPage.setHgap(10);
         frontPage.setVgap(10);
-//        frontPage.setStyle("-fx-border-color: black");
-        
-	   
 	        
 	    btnAttending = new Button("Attending a conference?");
         frontPage.add(btnAttending, 1, 1);
@@ -79,7 +81,7 @@ public class MainApp extends Application {
         btnAdmin.setPrefHeight(100);
         btnAdmin.setPrefWidth(400);
         btnAdmin.setFont(Font.font(null, FontWeight.BOLD, 25));
-        btnAdmin.setOnAction(event -> adminAction);  // - tilføj action
+        btnAdmin.setOnAction(event -> adminAction());
         
         btnCancel = new Button("Cancel");
         pane.add(btnCancel, 1, 3);

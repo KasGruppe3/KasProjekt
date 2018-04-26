@@ -44,12 +44,20 @@ public class AttendantWindow extends Stage{
         Scene scene = new Scene(pane);
         this.setScene(scene);
     }
+
+	private Button btnAdd;
+	
 	
 	private void initContent(GridPane pane) {
         pane.setGridLinesVisible(false);
         pane.setPadding(new Insets(20));
         pane.setHgap(10);
         pane.setVgap(10);
+        
+        btnAdd = new Button("Add person");
+        pane.add(btnAdd, 1, 3);
+//        btnAdd.setOnAction(event -> addPerson());
+        
     }
 	
 }
