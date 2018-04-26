@@ -81,11 +81,7 @@ public class Attendant extends Person {
         }
     }
 
-    public RegistrationForm addRegistrationForm(Conference conference, LocalDate arrivalDate, LocalDate leavingDate,
-            boolean isSpeaker, String comment, Attendant attendant, Hotel hotel, ArrayList<Extra> extraChoices) {
-        registrationForm = new RegistrationForm(conference, arrivalDate, leavingDate, isSpeaker, comment, this, hotel,
-                extraChoices);
-        registrationForms.add(registrationForm);
-        return registrationForm;
+    public void addRegistrationForm(RegistrationForm registrationForm) {
+        this.registrationForms.add(registrationForm);
     }
 }

@@ -44,7 +44,7 @@ public class TestKAS {
         Attendant att = new Attendant("Finn Madsen", "dk", "12233445", "Telia");
 
         // Opret registrering
-        RegistrationForm reg = new RegistrationForm(conference, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
+        RegistrationForm reg = conference.addRegistrationForm(att, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
                 false, "", att, null, null);
 
         // Beregn og test pris
@@ -60,7 +60,7 @@ public class TestKAS {
 
         // Opret registrering
         Hotel hotel = hotels[0];
-        RegistrationForm reg = new RegistrationForm(conference, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
+        RegistrationForm reg = conference.addRegistrationForm(att, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
                 false, "", att, hotel, null);
 
         // Beregn og test pris
@@ -85,7 +85,7 @@ public class TestKAS {
         extras.add(hotel.getExtra().get(0)); // wifi
 
         // Opret registrering
-        RegistrationForm reg = new RegistrationForm(conference, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
+        RegistrationForm reg = conference.addRegistrationForm(att, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
                 false, "", att, hotel, extras);
 
         // Beregn og test pris
@@ -110,7 +110,7 @@ public class TestKAS {
         extras.add(hotel.getExtra().get(0)); // wifi
 
         // Opret registrering
-        RegistrationForm reg = new RegistrationForm(conference, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
+        RegistrationForm reg = conference.addRegistrationForm(att, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
                 true, "", att, hotel, extras);
 
         // Beregn og test pris

@@ -12,85 +12,97 @@ public class Conference {
     private LocalDate date;
     private int timeSpan;
     private double price;
-    private ArrayList<FieldTrip> fieldTrips = new ArrayList<FieldTrip>();
-    private ArrayList<RegistrationForm> registrationForms = new ArrayList<RegistrationForm>();
-    
-	
+    private ArrayList<FieldTrip> fieldTrips = new ArrayList<>();
+    private ArrayList<RegistrationForm> registrationForms = new ArrayList<>();
+
     public Conference(String name, String location, LocalDate date, int timeSpan, double price) {
-		this.name = name;
-		this.location = location;
-		this.date = date;
-		this.timeSpan = timeSpan;
-		this.price = price;
-	}
+        this.name = name;
+        this.location = location;
+        this.date = date;
+        this.timeSpan = timeSpan;
+        this.price = price;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getLocation() {
-		return location;
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
-	public LocalDate getDate() {
-		return date;
-	}
+    public LocalDate getDate() {
+        return date;
+    }
 
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
-	public int getTimeSpan() {
-		return timeSpan;
-	}
+    public int getTimeSpan() {
+        return timeSpan;
+    }
 
-	public void setTimeSpan(int timeSpan) {
-		this.timeSpan = timeSpan;
-	}
+    public void setTimeSpan(int timeSpan) {
+        this.timeSpan = timeSpan;
+    }
 
-	public double getPrice() {
-		return price;
-	}
+    public double getPrice() {
+        return price;
+    }
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	
-	public ArrayList<FieldTrip> getFieldTrips(){
-		return  new ArrayList<FieldTrip>(fieldTrips);
-	}
-	
-	public ArrayList<RegistrationForm> getRegistrationForm() {
-		return new ArrayList<RegistrationForm>(registrationForms);
-	}
-	
-	public void addRegistrationForm(RegistrationForm registrationForm) {
-		this.registrationForms.add(registrationForm);
-	}
-	
-	public void removeRegistrationForm(RegistrationForm registrationForm) {
-		this.registrationForms.remove(registrationForm);
-	}
-	
-	public FieldTrip addFieldTrip(LocalTime meetingTime, LocalDate date, String description, double price, boolean hasLunch) {
-		
-		FieldTrip f = new FieldTrip(date, meetingTime, description, price, hasLunch);
-		
-		fieldTrips.add(f);
-		
-		return f;
-	}
-	
-	public void removeFieldTrip(FieldTrip fieldTrip) {
-		fieldTrips.remove(fieldTrip);
-	}
-	
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public ArrayList<FieldTrip> getFieldTrips() {
+        return new ArrayList<>(fieldTrips);
+    }
+
+    public ArrayList<RegistrationForm> getRegistrationForm() {
+        return new ArrayList<>(registrationForms);
+    }
+
+    public RegistrationForm addRegistrationForm(Attendant att, LocalDate arrivalDate, LocalDate leavingDate,
+            boolean isSpeaker, String comment, Attendant attendant, Hotel hotel, ArrayList<Extra> extraChoices) {
+        // Opret registreringen
+        RegistrationForm registrationForm = new RegistrationForm(this, arrivalDate, leavingDate, isSpeaker, comment,
+                att, hotel, extraChoices);
+
+        // Gem den i vores liste
+        registrationForms.add(registrationForm);
+
+        // Tilføj den til deltagerens liste
+        att.addRegistrationForm(registrationForm);
+
+        // Returner den
+        return registrationForm;
+    }
+
+    public void removeRegistrationForm(RegistrationForm registrationForm) {
+        this.registrationForms.remove(registrationForm);
+    }
+
+    public FieldTrip addFieldTrip(LocalTime meetingTime, LocalDate date, String description, double price,
+            boolean hasLunch) {
+
+        FieldTrip f = new FieldTrip(date, meetingTime, description, price, hasLunch);
+
+        fieldTrips.add(f);
+
+        return f;
+    }
+
+    public void removeFieldTrip(FieldTrip fieldTrip) {
+        fieldTrips.remove(fieldTrip);
+    }
+
 }
