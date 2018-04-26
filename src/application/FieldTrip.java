@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Describes a fieldtrip that is offered by a conference.
- * 
+ *
  * @author Kenneth G.
  *
  */
@@ -36,6 +36,7 @@ public class FieldTrip {
         this.description = description;
         this.price = price;
         this.hasLunch = hasLunch;
+        this.companions = new ArrayList<>();
     }
 
     /**

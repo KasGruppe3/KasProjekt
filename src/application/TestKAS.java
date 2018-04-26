@@ -3,9 +3,9 @@ package application;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class TestKAS {
     private Conference conference;
@@ -19,10 +19,11 @@ public class TestKAS {
 
         // Opret ture til ledsagere
         fieldtrips = new FieldTrip[3];
-        fieldtrips[0] = new FieldTrip(LocalDate.of(2018, 5, 18), LocalTime.of(10, 0), "Byrundtur, Odense", 125, true);
-        fieldtrips[1] = new FieldTrip(LocalDate.of(2018, 5, 19), LocalTime.of(10, 0), "Egeskov", 75, false);
-        fieldtrips[2] = new FieldTrip(LocalDate.of(2018, 5, 20), LocalTime.of(10, 0), "Trapholt Museum, Kolding", 200,
-                true);
+        fieldtrips[0] = conference.addFieldTrip(LocalTime.of(10, 0), LocalDate.of(2018, 5, 18), "Byrundtur, Odense",
+                125, true);
+        fieldtrips[1] = conference.addFieldTrip(LocalTime.of(10, 0), LocalDate.of(2018, 5, 19), "Egeskov", 75, false);
+        fieldtrips[2] = conference.addFieldTrip(LocalTime.of(10, 0), LocalDate.of(2018, 5, 20),
+                "Trapholt Museum, Kolding", 200, true);
 
         // Opret hotellerne
         hotels = new Hotel[3];
@@ -40,7 +41,7 @@ public class TestKAS {
     @Test
     public void testFinnMadsen() {
         // Opret deltager
-        Attendant att = new Attendant("Finn Madsen", "dk", "12233445");
+        Attendant att = new Attendant("Finn Madsen", "dk", "12233445", "Telia");
 
         // Opret registrering
         RegistrationForm reg = new RegistrationForm(conference, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
@@ -49,13 +50,13 @@ public class TestKAS {
         // Beregn og test pris
         PaymentInformation payment = new PaymentInformation(reg);
         double pris = payment.calculateInvoicePrice();
-        assertEquals(4500, pris, 0.01);
+        assertEquals(4500.0, pris, 0.01);
     }
 
     @Test
     public void testNielsPetersen() {
         // Opret deltager
-        Attendant att = new Attendant("Niels Petersen", "dk", "12345678");
+        Attendant att = new Attendant("Niels Petersen", "dk", "12345678", "Telia");
 
         // Opret registrering
         Hotel hotel = hotels[0];
@@ -96,7 +97,7 @@ public class TestKAS {
     @Test
     public void testLoneJensen() {
         // Opret deltager
-        Attendant att = new Attendant("Lone Jensen", "dk", "22334455");
+        Attendant att = new Attendant("Lone Jensen", "dk", "22334455", "Telia");
         Companion comp = att.createCompanion("Jan Madsen");
 
         // Meld til udflugter

@@ -1,6 +1,7 @@
 package application;
 
 import java.time.Period;
+import java.util.ArrayList;
 
 public class PaymentInformation {
     private RegistrationForm registrationForm;
@@ -37,15 +38,31 @@ public class PaymentInformation {
      * @return price of the hotel
      */
     public double calculateHotelPrice() {
-        // Calculate the number of days at the hotel.
-        Period period = Period.between(registrationForm.getArrivalDate(), registrationForm.getLeavingDate());
-
-        // Calculate the price of sing/double room
-        if (null == registrationForm.getAttendant()) {
-            return registrationForm.getHotel().getPriceDouble() * period.getDays();
-        } else {
-            return registrationForm.getHotel().getPriceSingle() * period.getDays();
+        Hotel hotel = registrationForm.getHotel();
+        if (hotel == null) {
+            return 0.0;
         }
+
+        // Get the number of days at the hotel.
+        int days = getHotelStayDuration();
+
+        // Calculate the price of single/double room
+        double price = 0.0;
+        if (registrationForm.getAttendant().hasCompanion()) {
+            price += hotel.getPriceDouble() * days;
+        } else {
+            price += hotel.getPriceSingle() * days;
+        }
+
+        // Calculate the price of extras
+        ArrayList<Extra> extras = registrationForm.getExtraChoices();
+        if (extras != null) {
+            for (Extra e : extras) {
+                price += e.getPrice() * days;
+            }
+        }
+
+        return price;
     }
 
     /**
@@ -59,16 +76,31 @@ public class PaymentInformation {
         Companion companion = registrationForm.getAttendant().getCompanion();
 
         // Calculate the price of the fieldtrips
-        double fieldtripPrice = 0.0;
+        double totalPrice = 0.0;
         for (FieldTrip f : conference.getFieldTrips()) {
             if (f.getCompanions().contains(companion)) {
-                fieldtripPrice += f.getPrice();
+                totalPrice += f.getPrice();
             }
-
         }
 
-        // Returns the price of the conference and fieldtrips
-        return conference.getPrice() + fieldtripPrice;
+        // Speakers don't pay to attend
+        if (!registrationForm.isSpeaker()) {
+            totalPrice += conference.getPrice() * getConferenceDuration();
+        }
+
+        return totalPrice;
     }
 
+    // Returns the duration of the attendants stay in days (all included)
+    private int getConferenceDuration() {
+        Period period = Period.between(registrationForm.getArrivalDate(), registrationForm.getLeavingDate());
+        int days = 1 + period.getDays();
+        return days;
+    }
+
+    private int getHotelStayDuration() {
+        Period period = Period.between(registrationForm.getArrivalDate(), registrationForm.getLeavingDate());
+        int days = period.getDays();
+        return days;
+    }
 }
