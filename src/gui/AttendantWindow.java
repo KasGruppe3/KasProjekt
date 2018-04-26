@@ -1,5 +1,6 @@
 package gui;
 
+import application.Attendant;
 import application.Service;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -19,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
@@ -37,6 +39,8 @@ public class AttendantWindow extends Stage{
         this.setMinWidth(200);
         this.setResizable(false);
         
+		createAttendant = new CreateAttendantWindow("Create Attendant", stage);
+        
         this.setTitle(title);
         GridPane pane = new GridPane();
         this.initContent(pane);
@@ -46,6 +50,7 @@ public class AttendantWindow extends Stage{
     }
 
 	private Button btnAdd;
+	private ListView<Attendant> lvwAttendants;
 	
 	
 	private void initContent(GridPane pane) {
@@ -55,10 +60,19 @@ public class AttendantWindow extends Stage{
         pane.setVgap(10);
         
         btnAdd = new Button("Add person");
-        pane.add(btnAdd, 1, 3);
-//        btnAdd.setOnAction(event -> addPerson());
+        pane.add(btnAdd, 1, 1);
+        btnAdd.setOnAction(event -> addPerson()); //- lav action.
+        
+        lvwAttendants = new ListView<>();
+        pane.add(lvwAttendants, 1, 2, 1, 2);
         
     }
+	
+	// -----------------------------------------------------
+			// Button actions
+	private void addPerson() {
+		createAttendant.show();
+	}
 	
 }
 
