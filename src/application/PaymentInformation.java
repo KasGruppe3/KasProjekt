@@ -91,13 +91,16 @@ public class PaymentInformation {
         return totalPrice;
     }
 
-    // Returns the duration of the attendants stay in days (all included)
+    // Returns the duration of the attendants stay in days at the conference
+    // (all included)
     private int getConferenceDuration() {
         Period period = Period.between(registrationForm.getArrivalDate(), registrationForm.getLeavingDate());
         int days = 1 + period.getDays();
         return days;
     }
 
+    // Returns the duration of the attendants stay in days at the hotel (all
+    // included)
     private int getHotelStayDuration() {
         Period period = Period.between(registrationForm.getArrivalDate(), registrationForm.getLeavingDate());
         int days = period.getDays();
