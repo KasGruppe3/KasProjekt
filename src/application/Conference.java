@@ -69,8 +69,27 @@ public class Conference {
         return new ArrayList<>(registrationForms);
     }
 
+    /**
+     * Create a registration of an attendant to a conference
+     *
+     * @param att
+     *            The attendant to register
+     * @param arrivalDate
+     *            The date of the attendants arrival
+     * @param leavingDate
+     *            The date of the attendants departure
+     * @param isSpeaker
+     *            True if the attendant is a speaker
+     * @param comment
+     *            Special comment from the attendant to the conference
+     * @param hotel
+     *            The hotel, if any, the attendant will be staying at
+     * @param extraChoices
+     *            Chosen extra services from the hotel
+     * @return The filled out registration form
+     */
     public RegistrationForm addRegistrationForm(Attendant att, LocalDate arrivalDate, LocalDate leavingDate,
-            boolean isSpeaker, String comment, Attendant attendant, Hotel hotel, ArrayList<Extra> extraChoices) {
+            boolean isSpeaker, String comment, Hotel hotel, ArrayList<Extra> extraChoices) {
         // Create the registration instance
         RegistrationForm registrationForm = new RegistrationForm(this, arrivalDate, leavingDate, isSpeaker, comment,
                 att, hotel, extraChoices);
@@ -103,13 +122,26 @@ public class Conference {
         this.registrationForms.remove(registrationForm);
     }
 
+    /**
+     * Adds a fieldtrip to the conference that attendants companions can
+     * participate in
+     * 
+     * @param meeting
+     *            Time The time the fieldtrip will start
+     * @param date
+     *            The date the fieldtrip takes place
+     * @param description
+     *            Additional information regarding the fieldtrip
+     * @param price
+     *            The cost of participation
+     * @param hasLunch
+     *            True if lunch is included in the price
+     * @return The fieldtrip instance
+     */
     public FieldTrip addFieldTrip(LocalTime meetingTime, LocalDate date, String description, double price,
             boolean hasLunch) {
-
         FieldTrip f = new FieldTrip(date, meetingTime, description, price, hasLunch);
-
         fieldTrips.add(f);
-
         return f;
     }
 

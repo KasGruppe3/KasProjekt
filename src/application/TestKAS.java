@@ -45,7 +45,7 @@ public class TestKAS {
 
         // Opret registrering
         RegistrationForm reg = conference.addRegistrationForm(att, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
-                false, "", att, null, null);
+                false, "", null, null);
 
         // Beregn og test pris
         PaymentInformation payment = new PaymentInformation(reg);
@@ -61,7 +61,7 @@ public class TestKAS {
         // Opret registrering
         Hotel hotel = hotels[0];
         RegistrationForm reg = conference.addRegistrationForm(att, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
-                false, "", att, hotel, null);
+                false, "", hotel, null);
 
         // Beregn og test pris
         PaymentInformation payment = new PaymentInformation(reg);
@@ -81,7 +81,7 @@ public class TestKAS {
 
         // Opret registrering
         RegistrationForm reg = conference.addRegistrationForm(att, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
-                false, "", att, hotel, extras);
+                false, "", hotel, extras);
 
         // Tilføj ledsager og meld til udflugter
         Companion comp = reg.createCompanion("Mie Sommer");
@@ -106,7 +106,7 @@ public class TestKAS {
 
         // Opret registrering
         RegistrationForm reg = conference.addRegistrationForm(att, LocalDate.of(2018, 5, 18), LocalDate.of(2018, 5, 20),
-                true, "", att, hotel, extras);
+                true, "", hotel, extras);
 
         // Opret ledsager og meld til udflugter
         Companion comp = reg.createCompanion("Jan Madsen");
