@@ -113,15 +113,35 @@ public class Service {
 	//Attendant
 	//--------------------------------------------------------------------------------------------------------------------------------------------
 	
+	public static Attendant createAttendant(String name, String address, String tlfNumber, String company) {
+		Attendant a = new Attendant(name, address, tlfNumber, company);
+		Storage.addAttendant(a);
+		return a;
+	}
+	
+	public static void removeAttendant(Attendant attendant) {
+		
+		
+		
+		
+		Storage.removeAttendant(attendant);
+		
+	}
 	
 	
 	//FieldTrip
 	//--------------------------------------------------------------------------------------------------------------------------------------------
 	
+	
+	
 	//RegistrationForm
 	//--------------------------------------------------------------------------------------------------------------------------------------------
+	
+	
 	
 	//Calculations
 	//--------------------------------------------------------------------------------------------------------------------------------------------
 
+	
+	
 }
