@@ -84,4 +84,8 @@ public class Attendant extends Person {
     public void addRegistrationForm(RegistrationForm registrationForm) {
         this.registrationForms.add(registrationForm);
     }
+
+    public ArrayList<RegistrationForm> getRegistrationForms() {
+        return new ArrayList<>(registrationForms);
+    }
 }
