@@ -87,6 +87,13 @@ public class Conference {
         return registrationForm;
     }
 
+    /**
+     * Remove a registration from the conference.
+     * This will also remove the companion from fieldtrips
+     * 
+     * @param registrationForm
+     *            the registration to remove
+     */
     public void removeRegistrationForm(RegistrationForm registrationForm) {
         // Fjern ledsageren fra turene
         Companion companion = registrationForm.getAttendant().getCompanion();
