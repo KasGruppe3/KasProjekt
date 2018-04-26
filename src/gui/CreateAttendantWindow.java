@@ -1,5 +1,6 @@
 package gui;
 
+import application.Attendant;
 import application.Service;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -29,8 +30,8 @@ import javafx.stage.Stage;
 
 public class CreateAttendantWindow extends Stage{
 
-	public CreateAttendantWindow(String title, Stage owner) {
-        initOwner(owner);
+	public CreateAttendantWindow(String title, Attendant attendant) {
+        initOwner(attendant);
         initStyle(StageStyle.UTILITY);
         initModality(Modality.APPLICATION_MODAL);
         setMinHeight(100);

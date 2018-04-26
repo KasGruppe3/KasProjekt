@@ -39,8 +39,6 @@ public class AttendantWindow extends Stage{
         this.setMinWidth(200);
         this.setResizable(false);
         
-		createAttendant = new CreateAttendantWindow("Create Attendant", stage);
-        
         this.setTitle(title);
         GridPane pane = new GridPane();
         this.initContent(pane);
@@ -65,13 +63,21 @@ public class AttendantWindow extends Stage{
         
         lvwAttendants = new ListView<>();
         pane.add(lvwAttendants, 1, 2, 1, 2);
+        lvwAttendants.setPrefWidth(200);
+        lvwAttendants.setPrefHeight(200);
+        lvwAttendants.getItems().setAll(Service.getAttendants());
         
     }
 	
 	// -----------------------------------------------------
 			// Button actions
 	private void addPerson() {
-		createAttendant.show();
+		Attendant attendant = lvwAttendants.getSelectionModel().getSelectedItem();
+
+        CreateAttendantWindow attWindow = new CreateAttendantWindow("Create Attendant", attendant);
+        attWindow.showAndWait();
+
+        // Wait for the modal dialog to close
 	}
 	
 }
