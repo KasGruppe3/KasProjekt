@@ -1,0 +1,22 @@
+{
+    "run": [
+        {
+            "name": "Projekt 03 - KAS",
+            "projectName": "Projekt 03 - KAS",
+            "workingDirectory": "c:\\Users\\dasap\\OneDrive\\Datamatiker18v\\EclipseWorkspace\\KasProjekt",
+            "args": [],
+            "vmargs": [],
+            "preLaunchTask": ""
+        }
+    ],
+    "debug": [
+        {
+            "name": "Projekt 03 - KAS",
+            "projectName": "Projekt 03 - KAS",
+            "workingDirectory": "c:\\Users\\dasap\\OneDrive\\Datamatiker18v\\EclipseWorkspace\\KasProjekt",
+            "args": [],
+            "vmargs": [],
+            "preLaunchTask": ""
+        }
+    ]
+}
