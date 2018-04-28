@@ -112,14 +112,20 @@ public class Conference {
      *            the registration to remove
      */
     public void removeRegistrationForm(RegistrationForm registrationForm) {
-        // Fjern ledsageren fra turene
-        Companion companion = registrationForm.getCompanion();
-        for (FieldTrip fieldTrip : fieldTrips) {
-            fieldTrip.removeCompanion(companion);
-        }
+        // Remove the companion from the fieldtrips
+        removeCompanion(registrationForm.getCompanion());
 
         // Fjern registreringen
         this.registrationForms.remove(registrationForm);
+    }
+
+    /**
+     * Removes a companion from all the conferences field trips
+     */
+    public void removeCompanion(Companion companion) {
+        for (FieldTrip fieldTrip : fieldTrips) {
+            fieldTrip.removeCompanion(companion);
+        }
     }
 
     /**
@@ -138,11 +144,9 @@ public class Conference {
      *            True if lunch is included in the price
      * @return The fieldtrip instance
      */
-    public FieldTrip addFieldTrip(LocalTime meetingTime, LocalDate date, String description, double price,
-            boolean hasLunch) {
-        FieldTrip f = new FieldTrip(date, meetingTime, description, price, hasLunch);
-        fieldTrips.add(f);
-        return f;
+    public void addFieldTrip(FieldTrip ft) {
+        if (!fieldTrips.contains(ft))
+            fieldTrips.add(ft);
     }
 
     public void removeFieldTrip(FieldTrip fieldTrip) {
