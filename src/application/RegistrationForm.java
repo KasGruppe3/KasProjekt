@@ -101,7 +101,7 @@ public class RegistrationForm {
 
     public ArrayList<Extra> getExtraChoices() {
         if (extraChoices == null) {
-            return new ArrayList<Extra>();
+            return new ArrayList<>();
         } else {
             return extraChoices;
         }
@@ -136,9 +136,7 @@ public class RegistrationForm {
      * @return The created companion instance
      */
     public Companion createCompanion(String name) {
-        if (companion != null) {
-            removeCompanion();
-        }
+        removeCompanion();
 
         companion = new Companion(name, getAttendant());
         return companion;
@@ -150,7 +148,6 @@ public class RegistrationForm {
      */
     public void removeCompanion() {
         if (companion != null) {
-            // Fjern ledsageren fra alle turene
             ArrayList<FieldTrip> trips = conference.getFieldTrips();
             for (FieldTrip trip : trips) {
                 trip.removeCompanion(companion);
