@@ -25,13 +25,19 @@ public class TestService {
         hotels[1] = Service.createHotel("Hotel 2", "addresse 2", 2, 6);
         hotels[2] = Service.createHotel("Hotel 3", "addresse 3", 3, 7);
 
-        conferences[0] = Service.createConference("Konference 1", "Kbh", LocalDate.now(), 1, 100.0);
-        conferences[1] = Service.createConference("Konference 2", "Aarhus", LocalDate.now(), 2, 200.0);
-        conferences[2] = Service.createConference("Konference 3", "Odense", LocalDate.now(), 3, 300.0);
-
         fieldTrips[0] = Service.createFieldTrip(LocalDate.of(2018, 1, 1), LocalTime.of(10, 1), "Udflugt 1", 100, false);
         fieldTrips[1] = Service.createFieldTrip(LocalDate.of(2018, 1, 2), LocalTime.of(10, 2), "Udflugt 2", 200, false);
         fieldTrips[2] = Service.createFieldTrip(LocalDate.of(2018, 1, 3), LocalTime.of(10, 3), "Udflugt 3", 300, false);
+
+        conferences[0] = Service.createConference("Konference 1", "Kbh", LocalDate.now(), 1, 100.0);
+        conferences[0].addFieldTrip(fieldTrips[0]);
+        conferences[0].addFieldTrip(fieldTrips[1]);
+        conferences[1] = Service.createConference("Konference 2", "Aarhus", LocalDate.now(), 2, 200.0);
+        conferences[1].addFieldTrip(fieldTrips[1]);
+        conferences[1].addFieldTrip(fieldTrips[2]);
+        conferences[2] = Service.createConference("Konference 3", "Odense", LocalDate.now(), 3, 300.0);
+        conferences[2].addFieldTrip(fieldTrips[2]);
+        conferences[2].addFieldTrip(fieldTrips[0]);
 
         attendants[0] = Service.createAttendant("Deltager 1", "addresse 1", "1", "");
         attendants[1] = Service.createAttendant("Deltager 2", "addresse 2", "2", "");
@@ -128,6 +134,11 @@ public class TestService {
         for (RegistrationForm rf : attendants[1].getRegistrationForms()) {
             assertFalse("Deltagerens registreringsform findes stadig i serviceklassen",
                     Service.getRegistrationForms().contains(rf));
+
+            // Check all fieldtrips for the companion
+            for (FieldTrip ft : rf.getConference().getFieldTrips()) {
+                assertFalse("Ledsageren peges stadig på af en udflugt", ft.getCompanions().contains(companions[1]));
+            }
         }
 
         // Check all registrations to make sure none of them points to the
@@ -135,11 +146,6 @@ public class TestService {
         for (RegistrationForm rf : Service.getRegistrationForms()) {
             assertNotEquals("Deltageren peges stadig på af en regform", attendants[1], rf.getAttendant());
             assertNotEquals("Ledsageren peges stadig på af en regform", companions[1], rf.getCompanion());
-        }
-
-        // Check all fieldtrips for the companion
-        for (FieldTrip ft : Service.getFieldTrips()) {
-            assertFalse("Ledsageren peges stadig på af en udflugt", ft.getCompanions().contains(companions[1]));
         }
     }
 }
