@@ -120,10 +120,7 @@ public class RegistrationForm {
     }
 
     public boolean hasCompanion() {
-        if (companion != null) {
-            return true;
-        }
-        return false;
+        return (companion != null);
     }
 
     /**
@@ -136,24 +133,14 @@ public class RegistrationForm {
      * @return The created companion instance
      */
     public Companion createCompanion(String name) {
-        removeCompanion();
-
         companion = new Companion(name, getAttendant());
         return companion;
     }
 
     /**
-     * Removes a companion from the registration. Will also remove it from all
-     * fieldtrips.
+     * Removes a companion from the registration.
      */
     public void removeCompanion() {
-        if (companion != null) {
-            ArrayList<FieldTrip> trips = conference.getFieldTrips();
-            for (FieldTrip trip : trips) {
-                trip.removeCompanion(companion);
-            }
-
-            companion = null;
-        }
+        companion = null;
     }
 }
