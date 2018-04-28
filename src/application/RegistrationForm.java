@@ -1,7 +1,5 @@
 package application;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
