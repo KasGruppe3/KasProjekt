@@ -69,7 +69,7 @@ public class TestService {
     @Test
     /**
      * Test the removal of a fieldtrip.
-     * This should also remove: links from conferences
+     * This should also remove links from conferences
      */
     public void testRemoveFieldTrip() {
         Service.removeFieldTrip(fieldTrips[1]);
@@ -86,7 +86,7 @@ public class TestService {
     @Test
     /**
      * Test the removal of a hotel.
-     * postcondition: No registrations should link to the removed hotel
+     * No registrations should link to the removed hotel
      */
     public void testRemoveHotel() {
         Service.removeHotel(hotels[1]);
@@ -105,7 +105,7 @@ public class TestService {
     @Test
     /**
      * Test the removal of an attendant.
-     * postcondition: Associated registrations are removed, companions removed from fieldtrips
+     * Associated registrations are removed, companions removed from fieldtrips
      */
     public void testRemoveAttendant() {
         Service.removeAttendant(attendants[1]);
