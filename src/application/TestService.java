@@ -37,13 +37,27 @@ public class TestService {
         attendants[1] = Service.createAttendant("Deltager 2", "addresse 2", "2", "");
         attendants[2] = Service.createAttendant("Deltager 3", "addresse 3", "3", "");
 
-        registrations[0] = Service.createRegistrationForm(conferences[0], LocalDate.of(2018, 5, 1), LocalDate.of(2018, 5, 3), false, "comment", attendants[0], hotels[0], null);
-        registrations[1] = Service.createRegistrationForm(conferences[0], LocalDate.of(2018, 5, 1), LocalDate.of(2018, 5, 3), false, "comment", attendants[1], hotels[1], null);
-        registrations[2] = Service.createRegistrationForm(conferences[1], LocalDate.of(2018, 5, 1), LocalDate.of(2018, 5, 3), false, "comment", attendants[2], hotels[2], null);
+        registrations[0] = Service.createRegistrationForm(conferences[0], LocalDate.of(2018, 5, 1),
+                LocalDate.of(2018, 5, 3), false, "comment", attendants[0], hotels[0], null);
+        registrations[1] = Service.createRegistrationForm(conferences[0], LocalDate.of(2018, 5, 1),
+                LocalDate.of(2018, 5, 3), false, "comment", attendants[1], hotels[1], null);
+        registrations[2] = Service.createRegistrationForm(conferences[1], LocalDate.of(2018, 5, 1),
+                LocalDate.of(2018, 5, 3), false, "comment", attendants[2], hotels[2], null);
 
         companions[0] = registrations[0].createCompanion("Ledsager 1");
+        companions[0] = registrations[0].createCompanion("Ledsager 1.1");
         companions[1] = registrations[1].createCompanion("Ledsager 2");
         companions[2] = registrations[2].createCompanion("Ledsager 3");
+
+        fieldTrips[0].addCompanion(companions[0]);
+        fieldTrips[0].addCompanion(companions[1]);
+        fieldTrips[0].addCompanion(companions[2]);
+        fieldTrips[1].addCompanion(companions[0]);
+        fieldTrips[1].addCompanion(companions[1]);
+        fieldTrips[1].addCompanion(companions[2]);
+        fieldTrips[2].addCompanion(companions[0]);
+        fieldTrips[2].addCompanion(companions[1]);
+        fieldTrips[2].addCompanion(companions[2]);
     }
 
     @Test
@@ -112,10 +126,12 @@ public class TestService {
 
         // The attendants registration should not be in the system any more
         for (RegistrationForm rf : attendants[1].getRegistrationForms()) {
-            assertFalse("Deltagerens registreringsform findes stadig i serviceklassen", Service.getRegistrationForms().contains(rf));
+            assertFalse("Deltagerens registreringsform findes stadig i serviceklassen",
+                    Service.getRegistrationForms().contains(rf));
         }
 
-        // Check all registrations to make sure none of them points to the attendant
+        // Check all registrations to make sure none of them points to the
+        // attendant
         for (RegistrationForm rf : Service.getRegistrationForms()) {
             assertNotEquals("Deltageren peges stadig på af en regform", attendants[1], rf.getAttendant());
             assertNotEquals("Ledsageren peges stadig på af en regform", companions[1], rf.getCompanion());
