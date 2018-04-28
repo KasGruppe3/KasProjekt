@@ -27,7 +27,7 @@ public class Service {
 		return Storage.getConferences();
 	}
 	
-	public void printHotelList(Conference c) {
+	public static void printHotelList(Conference c) {
 		
 		Hashtable<Hotel, ArrayList<Attendant>> hotel = new Hashtable<Hotel, ArrayList<Attendant>>();
 		
@@ -59,7 +59,7 @@ public class Service {
 	}
 	
 	
-	public void printConferenceList(Conference c) {
+	public static void printConferenceList(Conference c) {
 		
 		for(RegistrationForm a : c.getRegistrationForm()) {
 			System.out.println("----------------------------------------");
@@ -78,7 +78,7 @@ public class Service {
 	}
     
 	
-	public void printListFieldTrip(Conference co) {
+	public static void printListFieldTrip(Conference co) {
 		for (FieldTrip f : co.getFieldTrips()) {
 			System.out.println("---------------------------------------------");
 			System.out.println("Udflugts beskrivelse: " + f.getDescription() + ", dato: " + f.getDate() + ", middag inklusiv: " + f.isHasLunch() + ", pris: " + f.getPrice());
@@ -99,15 +99,11 @@ public class Service {
 		return h;
 	}
 	
-	public ArrayList<Extra> getExtra(Hotel hotel) {
-		return hotel.getExtras();
-	}
-	
-	public void removeHotel(Hotel hotel) {
+	public static void removeHotel(Hotel hotel) {
 		Storage.removeHotel(hotel);
 	}
 	
-	public ArrayList<Hotel> getHotels() {
+	public static ArrayList<Hotel> getHotels() {
 		return Storage.getHotels();
 	}
 	
@@ -144,7 +140,7 @@ public class Service {
 		return f;
 	}
 	
-	public ArrayList<FieldTrip> getFieldTrips(){
+	public static ArrayList<FieldTrip> getFieldTrips(){
 		return Storage.getFieldTrips();
 	}
 	
