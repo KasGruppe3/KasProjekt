@@ -65,7 +65,7 @@ public class Conference {
         return new ArrayList<>(fieldTrips);
     }
 
-    public ArrayList<RegistrationForm> getRegistrationForm() {
+    public ArrayList<RegistrationForm> getRegistrationForms() {
         return new ArrayList<>(registrationForms);
     }
 
