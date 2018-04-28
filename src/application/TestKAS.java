@@ -48,8 +48,7 @@ public class TestKAS {
                 false, "", null, null);
 
         // Beregn og test pris
-        PaymentInformation payment = new PaymentInformation(reg);
-        double pris = payment.calculateInvoicePrice();
+        double pris = Service.CalculateInvoice(reg);
         assertEquals(4500.0, pris, 0.01);
     }
 
@@ -64,8 +63,7 @@ public class TestKAS {
                 false, "", hotel, null);
 
         // Beregn og test pris
-        PaymentInformation payment = new PaymentInformation(reg);
-        double pris = payment.calculateInvoicePrice();
+        double pris = Service.CalculateInvoice(reg);
         assertEquals(6600, pris, 0.01);
     }
 
@@ -89,8 +87,7 @@ public class TestKAS {
         fieldtrips[2].addCompanion(comp); // trapholt
 
         // Beregn og test pris
-        PaymentInformation payment = new PaymentInformation(reg);
-        double pris = payment.calculateInvoicePrice();
+        double pris = Service.CalculateInvoice(reg);
         assertEquals(7375, pris, 0.01);
     }
 
@@ -114,8 +111,7 @@ public class TestKAS {
         fieldtrips[1].addCompanion(comp); // egeskov
 
         // Beregn og test pris
-        PaymentInformation payment = new PaymentInformation(reg);
-        double pris = payment.calculateInvoicePrice();
+        double pris = Service.CalculateInvoice(reg);
         assertEquals(2800, pris, 0.01);
     }
 }
