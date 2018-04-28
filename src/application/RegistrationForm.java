@@ -1,5 +1,7 @@
 package application;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -93,14 +95,18 @@ public class RegistrationForm {
      * Note: Changing the hotel will reset the extra hotel choices.
      */
     public void setHotel(Hotel hotel) {
-        if (hotel != this.hotel) {
+        if (this.hotel != hotel) {
             this.hotel = hotel;
-            extraChoices.clear();
+            extraChoices = null;
         }
     }
 
     public ArrayList<Extra> getExtraChoices() {
-        return extraChoices;
+        if (extraChoices == null) {
+            return new ArrayList<Extra>();
+        } else {
+            return extraChoices;
+        }
     }
 
     public void setExtraChoices(ArrayList<Extra> extraChoices) {
