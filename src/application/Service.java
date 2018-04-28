@@ -21,6 +21,11 @@ public class Service {
 	
 	public static void removeConference(Conference conference) {
 		Storage.removeConference(conference);
+
+		// Remove all registrations for the conference
+		for (RegistrationForm rf : conference.getRegistrationForms()) {
+			removeRegistrationForm(rf);
+		}
 	}
 	
 	public static ArrayList<Conference> getConferences(){
@@ -31,7 +36,7 @@ public class Service {
 		
 		Hashtable<Hotel, ArrayList<Attendant>> hotel = new Hashtable<Hotel, ArrayList<Attendant>>();
 		
-		for (RegistrationForm r : c.getRegistrationForm()) {
+		for (RegistrationForm r : c.getRegistrationForms()) {
 			if ( r.getHotel() != null) {
 				ArrayList<Attendant> list = hotel.get(r.getHotel());
 				if (list == null) {
@@ -61,7 +66,7 @@ public class Service {
 	
 	public static void printConferenceList(Conference c) {
 		
-		for(RegistrationForm a : c.getRegistrationForm()) {
+		for(RegistrationForm a : c.getRegistrationForms()) {
 			System.out.println("----------------------------------------");
 			System.out.println("Navn: " + a.getAttendant().getName());
 			System.out.println("Adresse: " + a.getAttendant().getAddress());
@@ -158,8 +163,8 @@ public class Service {
 	//--------------------------------------------------------------------------------------------------------------------------------------------
 	
 	public static RegistrationForm createRegistrationForm(Conference conference, LocalDate arrivalDate, LocalDate leavingDate, boolean isSpeaker, String comment, Attendant attendant, Hotel hotel, ArrayList<Extra> extraChoices) {
-		RegistrationForm r = new RegistrationForm(conference, arrivalDate, leavingDate, isSpeaker, comment, attendant, hotel, extraChoices);
-		Storage.addRegistrationForm(r);		
+		RegistrationForm r = conference.addRegistrationForm(attendant, arrivalDate, leavingDate, isSpeaker, comment, hotel, extraChoices);
+		Storage.addRegistrationForm(r);
 		return r;
 	}
 	
