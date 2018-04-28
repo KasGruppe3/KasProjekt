@@ -19,11 +19,15 @@ public class TestKAS {
 
         // Opret ture til ledsagere
         fieldtrips = new FieldTrip[3];
-        fieldtrips[0] = conference.addFieldTrip(LocalTime.of(10, 0), LocalDate.of(2018, 5, 18), "Byrundtur, Odense",
+        fieldtrips[0] = Service.createFieldTrip(LocalDate.of(2018, 5, 18), LocalTime.of(10, 0), "Byrundtur, Odense",
                 125, true);
-        fieldtrips[1] = conference.addFieldTrip(LocalTime.of(10, 0), LocalDate.of(2018, 5, 19), "Egeskov", 75, false);
-        fieldtrips[2] = conference.addFieldTrip(LocalTime.of(10, 0), LocalDate.of(2018, 5, 20),
+        fieldtrips[1] = Service.createFieldTrip(LocalDate.of(2018, 5, 19), LocalTime.of(10, 0), "Egeskov", 75, false);
+        fieldtrips[2] = Service.createFieldTrip(LocalDate.of(2018, 5, 20), LocalTime.of(10, 0), 
                 "Trapholt Museum, Kolding", 200, true);
+
+        conference.addFieldTrip(fieldtrips[0]);
+        conference.addFieldTrip(fieldtrips[1]);
+        conference.addFieldTrip(fieldtrips[2]);
 
         // Opret hotellerne
         hotels = new Hotel[3];
