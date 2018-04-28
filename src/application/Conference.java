@@ -106,17 +106,12 @@ public class Conference {
 
     /**
      * Remove a registration from the conference.
-     * This will also remove the companion from fieldtrips
      *
      * @param registrationForm
      *            the registration to remove
      */
     public void removeRegistrationForm(RegistrationForm registrationForm) {
-        // Remove the companion from the fieldtrips
-        removeCompanion(registrationForm.getCompanion());
-
-        // Fjern registreringen
-        this.registrationForms.remove(registrationForm);
+        registrationForms.remove(registrationForm);
     }
 
     /**
@@ -131,18 +126,6 @@ public class Conference {
     /**
      * Adds a fieldtrip to the conference that attendants companions can
      * participate in
-     * 
-     * @param meeting
-     *            Time The time the fieldtrip will start
-     * @param date
-     *            The date the fieldtrip takes place
-     * @param description
-     *            Additional information regarding the fieldtrip
-     * @param price
-     *            The cost of participation
-     * @param hasLunch
-     *            True if lunch is included in the price
-     * @return The fieldtrip instance
      */
     public void addFieldTrip(FieldTrip ft) {
         if (!fieldTrips.contains(ft))
