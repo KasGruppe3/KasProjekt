@@ -106,6 +106,13 @@ public class Service {
 	
 	public static void removeHotel(Hotel hotel) {
 		Storage.removeHotel(hotel);
+
+		// Reset hotels linked from registrationforms to null
+		for (RegistrationForm rf : getRegistrationForms()) {
+			if (rf.getHotel() == hotel) {
+				rf.setHotel(null);
+			}
+		}
 	}
 	
 	public static ArrayList<Hotel> getHotels() {
@@ -122,14 +129,13 @@ public class Service {
 	}
 	
 	public static void removeAttendant(Attendant attendant) {
-		
 		for (RegistrationForm r : attendant.getRegistrationForms()) {
-			Storage.removeCompanion(r.getCompanion());
-			r.getConference().removeRegistrationForm(r);
+			removeRegistrationForm(r);
+			//Storage.removeCompanion(r.getCompanion());
+			//r.getConference().removeRegistrationForm(r);
 		}
 		
 		Storage.removeAttendant(attendant);
-		
 	}
 	
 	public static ArrayList<Attendant> getAttendants(){
