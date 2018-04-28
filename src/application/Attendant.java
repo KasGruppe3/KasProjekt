@@ -79,4 +79,8 @@ public class Attendant extends Person {
     public ArrayList<RegistrationForm> getRegistrationForms() {
         return new ArrayList<>(registrationForms);
     }
+
+    public void removeRegstrationForm(RegistrationForm registrationForm) {
+        registrationForms.remove(registrationForm);
+    }
 }
