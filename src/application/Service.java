@@ -179,8 +179,9 @@ public class Service {
 	}
 	
 	public static void removeRegistrationForm(RegistrationForm registrationForm) {
-		registrationForm.getAttendant().getRegistrationForms().remove(registrationForm);
+		registrationForm.getAttendant().removeRegstrationForm(registrationForm);
 		registrationForm.getConference().removeRegistrationForm(registrationForm);
+		registrationForm.removeCompanion();
 		Storage.removeRegistrationForm(registrationForm);
 	}
 	
