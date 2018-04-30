@@ -52,11 +52,11 @@ public class AttendantWindow extends Stage{
 	    }
 
 	    private void initContent(TabPane pane) {
-	        pane.getTabs().add(new AttendantTab());
-	        pane.getTabs().add(new ConferrenceTab());
+//	        pane.getTabs().add(new AttendantTab());
+//	        pane.getTabs().add(new ConferrenceTab());
 	        pane.getTabs().add(new HotelTab());
-	        pane.getTabs().add(new FieldTripTab());
-	        pane.getTabs().add(new ApproveTab());
+//	        pane.getTabs().add(new FieldTripTab());
+//	        pane.getTabs().add(new ApproveTab());
 	    }
 
 	}
