@@ -3,6 +3,7 @@ package gui;
 import java.time.LocalDate;
 
 import javafx.scene.Node;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -56,6 +57,18 @@ public class KASBaseTab extends Tab {
         return dp;
     }
 
+    protected CheckBox addCheckBox(GridPane pane, int columnStart, int row, String text) {
+        // Set up the label
+        Label label = createLabel(text);
+        pane.add(label, columnStart, row);
+
+        // Create the checkbox
+        CheckBox cb = new CheckBox();
+        pane.add(cb, columnStart + 1, row);
+
+        return cb;
+    }
+
     protected Label addErrorMessageLabel(GridPane pane, int row, int columnSpan) {
         Label label = createLabel("hidden error msg");
         pane.add(label, 0, row, columnSpan, 1);
@@ -93,5 +106,4 @@ public class KASBaseTab extends Tab {
     protected void showInformation(String text) {
         showMessage(text, Color.GREEN);
     }
-
 }

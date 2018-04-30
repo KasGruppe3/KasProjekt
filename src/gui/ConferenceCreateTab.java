@@ -38,7 +38,6 @@ public class ConferenceCreateTab extends KASBaseTab {
         fieldDatePicker = addDatePicker(pane, 0, 2, "Dato");
         fieldDuration = addTextField(pane, 0, 3, "Antal dage");
         fieldPrice = addTextField(pane, 0, 4, "Pris");
-        createMessageField(pane, 1, 5, 2);
 
         // Reset error message when values change
         fieldName.setOnKeyPressed(event -> hideMessage());
@@ -50,7 +49,9 @@ public class ConferenceCreateTab extends KASBaseTab {
         Button btn = new Button("Ok");
         btn.setFont(Font.font("Arial", 16));
         btn.setOnAction(event -> buttonOk());
-        pane.add(btn, 1, 6);
+        pane.add(btn, 1, 5);
+
+        createMessageField(pane, 1, 6, 2);
     }
 
     private Object buttonOk() {
