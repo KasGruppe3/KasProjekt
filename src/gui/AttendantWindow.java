@@ -28,7 +28,7 @@ public class AttendantWindow extends Stage{
 	        pane.getTabs().add(new AttendantTab());
 	        pane.getTabs().add(new ConferrenceTab());
 	        pane.getTabs().add(new HotelTab());
-	        pane.getTabs().add(new CompanioinTab());
+	        pane.getTabs().add(new CompanionTab());
 	        pane.getTabs().add(new ApproveTab());
 	    }
 
