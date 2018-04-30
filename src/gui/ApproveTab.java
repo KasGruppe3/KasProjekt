@@ -72,7 +72,17 @@ public class ApproveTab extends KASBaseTab {
     private void buttonApprove() {
         // Approve all the data on the tabs
         Attendant attendant = attendantTab.approve();
+        if (attendant == null) {
+            showError("Deltager info er ikke gyldig");
+            return;
+        }
+
         Conference conf = conferenceTab.approve();
+        if (conf == null) {
+            showError("Vælg en konference!");
+            return;
+        }
+
         Hotel hotel = hotelTab.approve();
         String companionName = companionTab.approve();
 

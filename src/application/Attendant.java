@@ -83,4 +83,8 @@ public class Attendant extends Person {
     public void removeRegstrationForm(RegistrationForm registrationForm) {
         registrationForms.remove(registrationForm);
     }
+    @Override
+    public String toString() {
+    	return "" + getName();
+    }
 }
