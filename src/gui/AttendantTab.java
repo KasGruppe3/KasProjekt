@@ -2,8 +2,8 @@ package gui;
 
 import javafx.scene.control.TextField;
 
-import java.util.Hashtable;
-import javafx.beans.value.ObservableValue;
+import application.Attendant;
+import application.Service;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -72,5 +72,15 @@ public class AttendantTab extends Tab {
         info += "Tlf. Nummer: +" + txfCountryCode.getText() + " " + txfTlfNummer.getText() + "\n";
         info += "Firma: " + txfCompany.getText() + "\n";
         return info;
+    }
+
+    /**
+     * The entered info has been approved, so create an attendant
+     *
+     * @return the new attendant
+     */
+    public Attendant approve() {
+        return Service.createAttendant(txfName.getText(), txfAddress.getText(),
+                "+" + txfCountryCode.getText() + " " + txfTlfNummer.getText(), txfCompany.getText());
     }
 }
