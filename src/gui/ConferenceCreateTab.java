@@ -3,7 +3,9 @@ package gui;
 import java.time.LocalDate;
 
 import application.Conference;
+import application.Service;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -23,24 +25,25 @@ public class ConferenceCreateTab extends Tab {
         pane.setPadding(new Insets(20));
         pane.setHgap(50);
         pane.setVgap(10);
+        pane.setAlignment(Pos.CENTER_RIGHT);
 
         addInfo(pane, 0, "Navn");
         addInfo(pane, 1, "Lokation");
         addInfoDate(pane, 2, "Dato");
         addInfo(pane, 3, "Antal dage");
-        addInfo(pane, 5, "Pris");
+        addInfo(pane, 4, "Pris");
 
         // Ok knap
         Button btn = new Button("Ok");
-        btn.setFont(Font.font("Arial", 18));
+        btn.setFont(Font.font("Arial", 16));
         btn.setOnAction(event -> buttonOk());
-        pane.add(btn, 1, 6);
+        pane.add(btn, 1, 5);
 
         setContent(pane);
     }
 
     private Object buttonOk() {
-        // TODO Auto-generated method stub
+
         return null;
     }
 
