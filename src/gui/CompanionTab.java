@@ -17,7 +17,7 @@ public class CompanionTab extends KASBaseTab {
     private CheckBox cbxAttendant;
     private TextField tripCompanionName, tripDescription, tripTime, tripPrice, tripLunch;
     private ListView<FieldTrip> fieldTripList = new ListView<>();
-
+//
     public CompanionTab() {
         super("Ledsagerinfo");
 
