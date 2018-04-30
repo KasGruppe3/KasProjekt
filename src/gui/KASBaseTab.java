@@ -2,6 +2,7 @@ package gui;
 
 import java.time.LocalDate;
 
+import javafx.beans.property.Property;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
@@ -46,6 +47,18 @@ public class KASBaseTab extends Tab {
         return txf;
     }
 
+    protected Label addLabel(GridPane pane, int columnStart, int row, String text) {
+        // Set up the labels
+        Label label = createLabel(text);
+        pane.add(label, columnStart, row);
+
+        // Set up the editable field
+        label = new Label();
+        pane.add(label, columnStart + 1, row);
+
+        return label;
+    }
+
     protected DatePicker addDatePicker(GridPane pane, int columnStart, int row, String text) {
         // Set up the label
         Label label = createLabel(text);
@@ -69,7 +82,7 @@ public class KASBaseTab extends Tab {
         return cb;
     }
 
-    private Label createLabel(String text) {
+    protected Label createLabel(String text) {
         Label label = new Label();
         label.setText(text);
         // label.setMaxWidth(300);

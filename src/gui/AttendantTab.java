@@ -66,23 +66,11 @@ public class AttendantTab extends Tab {
         pane.add(txfCompany, 1, 3);
     }
 
-    public String getName() {
-        return txfName.getText();
-    }
-
-    public String getAddress() {
-        return txfAddress.getText();
-    }
-
-    public String getCountryCode() {
-        return txfCountryCode.getText();
-    }
-
-    public String getTlfNummer() {
-        return txfTlfNummer.getText();
-    }
-
-    public String getCompany() {
-        return txfCompany.getText();
+    public String getAttendantInfo() {
+        String info = "Navn: " + txfName.getText() + "\n";
+        info += "Adresse: " + txfAddress.getText() + "\n";
+        info += "Tlf. Nummer: +" + txfCountryCode.getText() + " " + txfTlfNummer.getText() + "\n";
+        info += "Firma: " + txfCompany.getText() + "\n";
+        return info;
     }
 }

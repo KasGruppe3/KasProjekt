@@ -2,17 +2,12 @@ package gui;
 
 import java.time.LocalDate;
 
-import application.Conference;
 import application.Service;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class ConferenceCreateTab extends KASBaseTab {
@@ -39,7 +34,7 @@ public class ConferenceCreateTab extends KASBaseTab {
         fieldDuration = addTextField(pane, 0, 3, "Antal dage");
         fieldPrice = addTextField(pane, 0, 4, "Pris");
 
-        // Reset error message when values change
+        // Reset message when values change
         fieldName.setOnKeyPressed(event -> hideMessage());
         fieldLocation.setOnKeyPressed(event -> hideMessage());
         fieldDuration.setOnKeyPressed(event -> hideMessage());
@@ -54,17 +49,17 @@ public class ConferenceCreateTab extends KASBaseTab {
         createMessageField(pane, 1, 6, 2);
     }
 
-    private Object buttonOk() {
+    private void buttonOk() {
         String name = fieldName.getText();
         if (name.isEmpty()) {
             showError("Angiv et navn");
-            return null;
+            return;
         }
 
         String location = fieldLocation.getText();
         if (location.isEmpty()) {
             showError("Angiv en lokation");
-            return null;
+            return;
         }
 
         LocalDate date = fieldDatePicker.getValue();
@@ -76,18 +71,17 @@ public class ConferenceCreateTab extends KASBaseTab {
         } catch (NumberFormatException nfe) {
             // Ya done goofed
             showError("Ugyldigt værdi af antal dage");
-            return null;
+            return;
         }
         try {
             price = Double.parseDouble(fieldPrice.getText());
         } catch (NumberFormatException nfe) {
             // Ya done goofed
             showError("Ugyldig pris");
-            return null;
+            return;
         }
 
         Service.createConference(name, location, date, timeSpan, price);
         showInformation("Konference oprettet!");
-        return null;
     }
 }
