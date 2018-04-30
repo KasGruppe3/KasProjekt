@@ -1,6 +1,8 @@
 package gui;
 
 import application.FieldTrip;
+import application.Hotel;
+import application.Service;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -17,7 +19,7 @@ public class CompanionTab extends KASBaseTab {
 	private ListView<FieldTrip> fieldTripList;
 
     public CompanionTab() {
-        super("V�lg udflugt for ledsager");
+        super("Ledsagerinfo");
 
         GridPane pane = new GridPane();
         pane.setGridLinesVisible(false);
@@ -40,12 +42,15 @@ public class CompanionTab extends KASBaseTab {
 		
 		GridPane fieldTripPane = new GridPane();
 		pane.add(fieldTripPane, 1, 2);
-		pane.setHgap(50);
+		pane.setHgap(20);
         pane.setVgap(20);
+        
+        GridPane navnPane = new GridPane();
+        pane.add(navnPane, 1, 0);
 		
 		cbxAttendant = addCheckBox(attPane, 0, 0, "Har du en deltager med?");
 		cbxAttendant.setOnAction(event -> tripCompanionName.setEditable(true));
-		tripCompanionName = addTextField(pane, 1, 0, "Deltagernavn:");
+		tripCompanionName = addTextField(navnPane, 0, 0, "Deltagernavn:");
 		tripCompanionName.setEditable(false);
         tripDescription = addTextField(fieldTripPane, 1, 1, "Beskrivelse:");
         tripDescription.setEditable(false);
@@ -56,19 +61,8 @@ public class CompanionTab extends KASBaseTab {
         tripLunch = addTextField(fieldTripPane, 1, 4, "Inklusiv mad:");
         tripLunch.setEditable(false);
         
-        if (fieldTripList.getItems().size() > 0) {
-        	fieldTripList.getSelectionModel().select(0);
-        }
+        fieldTripList.getItems().setAll(Service.getFieldTrips());
         
-        Button btn = new Button("Ok");
-        btn.setFont(Font.font("Arial", 16));
-        btn.setOnAction(event -> buttonOk());
-        pane.add(btn, 1, 5);
-        
-	}
-	private Object buttonOk() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	private void selectedFieldTrip() {
 		this.updateControls();
@@ -76,7 +70,7 @@ public class CompanionTab extends KASBaseTab {
 	public void updateControls() {
         FieldTrip fieldTrip = fieldTripList.getSelectionModel().getSelectedItem();
         if (fieldTrip != null) {
-            tripDescription.setText(fieldTrip.getDescription());
+            tripDescription.setText(""+fieldTrip.getDescription());
             tripTime.setText("" + fieldTrip.getMeetingTime());
             tripPrice.setText("" + fieldTrip.getPrice());
             tripLunch.setText("" + fieldTrip.isHasLunch());
@@ -85,6 +79,6 @@ public class CompanionTab extends KASBaseTab {
         	tripTime.clear();
         	tripPrice.clear();
         	tripLunch.clear();
-        }
+        }    
     }
 }

@@ -104,4 +104,9 @@ public class FieldTrip {
     public ArrayList<Companion> getCompanions() {
         return companions;
     }
+    @Override
+    public String toString() {
+    	return this.description;
+    }
 }
+
