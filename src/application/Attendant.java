@@ -24,7 +24,7 @@ public class Attendant extends Person {
      * @param company
      *            Company the attendant works for
      */
-    public Attendant(String name, String address, String tlfNumber, String company) {
+    Attendant(String name, String address, String tlfNumber, String company) {
         super(name);
         this.address = address;
         this.tlfNumber = tlfNumber;

@@ -25,7 +25,7 @@ public class Hotel {
      * @param priceDouble
      *            Price of a double room
      */
-    public Hotel(String name, String address, double priceSingle, double priceDouble) {
+    Hotel(String name, String address, double priceSingle, double priceDouble) {
         this.name = name;
         this.address = address;
         this.priceSingle = priceSingle;

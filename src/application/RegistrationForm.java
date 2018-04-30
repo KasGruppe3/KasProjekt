@@ -3,7 +3,7 @@ package application;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class RegistrationForm {
+	public class RegistrationForm {
     private LocalDate arrivalDate;
     private LocalDate leavingDate;
     private boolean isSpeaker;
@@ -32,7 +32,7 @@ public class RegistrationForm {
      * @param extraChoices
      *            Selected hotel offers to include in the hotel booking
      */
-    public RegistrationForm(Conference conference, LocalDate arrivalDate, LocalDate leavingDate, boolean isSpeaker,
+    RegistrationForm(Conference conference, LocalDate arrivalDate, LocalDate leavingDate, boolean isSpeaker,
             String comment, Attendant attendant, Hotel hotel, ArrayList<Extra> extraChoices) {
         this.arrivalDate = arrivalDate;
         this.leavingDate = leavingDate;
