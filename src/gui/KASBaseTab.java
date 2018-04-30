@@ -24,7 +24,7 @@ public class KASBaseTab extends Tab {
         setClosable(false);
     }
 
-    protected void addTextField(GridPane pane, int row, String text) {
+    protected TextField addTextField(GridPane pane, int row, String text) {
         // Set up the label
         Label label = createLabel(text);
         pane.add(label, 0, row);
@@ -36,15 +36,19 @@ public class KASBaseTab extends Tab {
         txf.setFocusTraversable(true);
         // txf.setFont(font);
         pane.add(txf, 1, row);
+
+        return txf;
     }
 
-    protected void addDatePicker(GridPane pane, int row, String text) {
+    protected DatePicker addDatePicker(GridPane pane, int row, String text) {
         // Set up the label
         Label label = createLabel(text);
         pane.add(label, 0, row);
 
         DatePicker dp = new DatePicker();
         pane.add(dp, 1, row);
+
+        return dp;
     }
 
     private Label createLabel(String text) {
