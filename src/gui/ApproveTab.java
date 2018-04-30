@@ -8,10 +8,14 @@ import application.Hotel;
 import application.RegistrationForm;
 import application.Service;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class ApproveTab extends KASBaseTab {
 
@@ -97,6 +101,13 @@ public class ApproveTab extends KASBaseTab {
             ft.addCompanion(companion);
         }
 
-        showInformation("Registrering oprettet!");
+        Alert alarm = new Alert(AlertType.INFORMATION);
+        alarm.setTitle("Registrering oprettet!");
+        alarm.setHeaderText("");
+        alarm.setContentText("Din registrering til konferencen er accepteret.");
+        alarm.showAndWait();
+
+        Stage s = (Stage) getTabPane().getScene().getWindow();
+        s.close();
     }
 }
