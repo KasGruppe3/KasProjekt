@@ -10,7 +10,7 @@ public class AttendantTab extends Tab {
 	
 
     public AttendantTab() {
-        super("Vælg deltager");
+        super("VÃ¦lg deltager");
 
         GridPane pane = new GridPane();
         pane.setGridLinesVisible(false);
