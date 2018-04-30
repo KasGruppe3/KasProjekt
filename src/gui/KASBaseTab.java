@@ -69,12 +69,6 @@ public class KASBaseTab extends Tab {
         return cb;
     }
 
-    protected Label addErrorMessageLabel(GridPane pane, int row, int columnSpan) {
-        Label label = createLabel("hidden error msg");
-        pane.add(label, 0, row, columnSpan, 1);
-        return label;
-    }
-
     private Label createLabel(String text) {
         Label label = new Label();
         label.setText(text);
