@@ -57,7 +57,7 @@ public class Service {
 			System.out.println(h.getName());
 			for (Attendant a : list) {
 				
-				System.out.println(a); //opdater med Attendant tekst som skal sendes til hotel
+				System.out.println(a);
 			}
 		}
 		
