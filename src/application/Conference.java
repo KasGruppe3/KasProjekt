@@ -12,7 +12,7 @@ public class Conference {
     private ArrayList<FieldTrip> fieldTrips = new ArrayList<>();
     private ArrayList<RegistrationForm> registrationForms = new ArrayList<>();
 
-    public Conference(String name, String location, LocalDate date, int timeSpan, double price) {
+    Conference(String name, String location, LocalDate date, int timeSpan, double price) {
         this.name = name;
         this.location = location;
         this.date = date;
@@ -133,6 +133,10 @@ public class Conference {
 
     public void removeFieldTrip(FieldTrip fieldTrip) {
         fieldTrips.remove(fieldTrip);
+    }
+    @Override
+    public String toString() {
+    	return this.name;
     }
 
 }

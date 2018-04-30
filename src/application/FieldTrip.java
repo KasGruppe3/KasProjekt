@@ -30,7 +30,7 @@ public class FieldTrip {
      * @param hasLunch
      *            True, if lunch is included in the price
      */
-    public FieldTrip(LocalDate date, LocalTime meetingTime, String description, double price, boolean hasLunch) {
+    FieldTrip(LocalDate date, LocalTime meetingTime, String description, double price, boolean hasLunch) {
         this.date = date;
         this.meetingTime = meetingTime;
         this.description = description;
@@ -104,4 +104,9 @@ public class FieldTrip {
     public ArrayList<Companion> getCompanions() {
         return companions;
     }
+    @Override
+    public String toString() {
+    	return this.description;
+    }
 }
+

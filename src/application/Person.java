@@ -4,7 +4,7 @@ package application;
  * Base class of persons in the system
  *
  */
-public class Person {
+class Person {
     private String name;
 
     public Person(String name) {

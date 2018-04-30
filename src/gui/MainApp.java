@@ -65,7 +65,7 @@ public class MainApp extends Application {
         pane.add(btnCancel, 1, 3);
         btnCancel.setOnAction(event -> closeWindow());
 
-        btnHelp = new Button("Hj�lp");
+        btnHelp = new Button("Hjælp");
         pane.add(btnHelp, 0, 3);
         btnHelp.setOnAction(event -> helpWindow());
     }
@@ -90,8 +90,8 @@ public class MainApp extends Application {
     public void helpWindow() {
         alarm = new Alert(AlertType.INFORMATION);
 
-        alarm.setTitle("Hj�lp");
-        alarm.setHeaderText("Tryk p� en knap.");
+        alarm.setTitle("Hjælp");
+        alarm.setHeaderText("Tryk på en knap.");
         alarm.setContentText(
                 "Tryk \"Deltag i konferrence\" hvis du vil deltage i en konference \nEller tryk Administrator hvis du er en del af konferrence teamet.");
 

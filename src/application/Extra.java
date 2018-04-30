@@ -5,7 +5,7 @@ public class Extra {
     private double price;
     private String description;
     
-    public Extra (String name, double price, String description) {
+    Extra (String name, double price, String description) {
     	this.name = name;
     	this.price = price;
     	this.description = description;
