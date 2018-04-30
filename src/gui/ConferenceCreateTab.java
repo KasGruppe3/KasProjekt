@@ -14,7 +14,6 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 public class ConferenceCreateTab extends KASBaseTab {
 
@@ -23,7 +22,6 @@ public class ConferenceCreateTab extends KASBaseTab {
     private DatePicker fieldDatePicker;
     private TextField fieldDuration;
     private TextField fieldPrice;
-    private Label fieldErrMsg;
 
     public ConferenceCreateTab() {
         super("Opret Konference");
@@ -33,15 +31,18 @@ public class ConferenceCreateTab extends KASBaseTab {
         pane.setPadding(new Insets(20));
         pane.setHgap(50);
         pane.setVgap(10);
+        setContent(pane);
 
-        fieldName = addTextField(pane, 0, "Navn");
-        fieldLocation = addTextField(pane, 1, "Lokation");
-        fieldDatePicker = addDatePicker(pane, 2, "Dato");
-        fieldDuration = addTextField(pane, 3, "Antal dage");
-        fieldPrice = addTextField(pane, 4, "Pris");
+        fieldName = addTextField(pane, 0, 0, "Navn");
+        fieldLocation = addTextField(pane, 0, 1, "Lokation");
+        fieldDatePicker = addDatePicker(pane, 0, 2, "Dato");
+        fieldDuration = addTextField(pane, 0, 3, "Antal dage");
+        fieldPrice = addTextField(pane, 0, 4, "Pris");
         createMessageField(pane, 1, 5, 2);
 
         // Reset error message when values change
+        fieldName.setOnKeyPressed(event -> hideMessage());
+        fieldLocation.setOnKeyPressed(event -> hideMessage());
         fieldDuration.setOnKeyPressed(event -> hideMessage());
         fieldPrice.setOnKeyPressed(event -> hideMessage());
 
@@ -50,18 +51,23 @@ public class ConferenceCreateTab extends KASBaseTab {
         btn.setFont(Font.font("Arial", 16));
         btn.setOnAction(event -> buttonOk());
         pane.add(btn, 1, 6);
-
-        setContent(pane);
     }
 
     private Object buttonOk() {
         String name = fieldName.getText();
         if (name.isEmpty()) {
-
+            showError("Angiv et navn");
+            return null;
         }
 
         String location = fieldLocation.getText();
+        if (location.isEmpty()) {
+            showError("Angiv en lokation");
+            return null;
+        }
+
         LocalDate date = fieldDatePicker.getValue();
+
         int timeSpan;
         double price;
         try {
