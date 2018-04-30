@@ -55,26 +55,26 @@ public class MainApp extends Application {
         frontPage.setHgap(10);
         frontPage.setVgap(10);
 	        
-	    btnAttending = new Button("Attending a conference?");
+	    btnAttending = new Button("Deltag i konferrence");
         frontPage.add(btnAttending, 1, 1);
         btnAttending.setPrefHeight(100);
         btnAttending.setPrefWidth(400);
         btnAttending.setFont(Font.font(null, FontWeight.BOLD, 25));
         btnAttending.setOnAction(event -> attendantAction());
         
-        btnAdmin = new Button("Admin");
+        btnAdmin = new Button("Administator");
         frontPage.add(btnAdmin, 1, 2);
         btnAdmin.setPrefHeight(100);
         btnAdmin.setPrefWidth(400);
         btnAdmin.setFont(Font.font(null, FontWeight.BOLD, 25));
         btnAdmin.setOnAction(event -> adminAction());
         
-        btnCancel = new Button("Cancel");
+        btnCancel = new Button("Afbryd");
         pane.add(btnCancel, 1, 3);
         btnCancel.setOnAction(event -> closeWindow());
 	    
 	    
-	    btnHelp = new Button("Help");
+	    btnHelp = new Button("Hjælp");
         pane.add(btnHelp, 0, 3);
         btnHelp.setOnAction(event -> helpWindow());
 	    }
@@ -97,9 +97,9 @@ public class MainApp extends Application {
 		public void helpWindow() {
 			alarm = new Alert(AlertType.INFORMATION);
 
-            alarm.setTitle("Help Window");
-            alarm.setHeaderText("Press a button");
-            alarm.setContentText("Press Attending a conferrence if you are attending a conference.\nOr Admin if you are part of the conferrence team.");
+            alarm.setTitle("Hjælp");
+            alarm.setHeaderText("Tryk på en knap.");
+            alarm.setContentText("Tryk \"Deltag i konferrence\" hvis du vil deltage i en konference \nEller tryk Administrator hvis du er en del af konferrence teamet.");
 
             alarm.showAndWait();
 
