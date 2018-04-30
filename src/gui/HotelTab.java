@@ -15,72 +15,72 @@ import javafx.scene.layout.GridPane;
 
 public class HotelTab extends Tab {
 
-    private ListView<Hotel> hotelList = new ListView<>();
-    ListView<Extra> hotelExtras = new ListView<>();
+	private ListView<Hotel> hotelList = new ListView<>();
+	ListView<Extra> hotelExtras = new ListView<>();
 
-    public HotelTab() {
+	public HotelTab() {
 
-        super("Hotel");
-        GridPane pane = new GridPane();
+		super("Hotel");
+		GridPane pane = new GridPane();
 
-        setContent(pane);
-        setClosable(false);
+		setContent(pane);
+		setClosable(false);
 
-        pane.setGridLinesVisible(false);
-        pane.setPadding(new Insets(10));
-        pane.setHgap(10);
-        pane.setVgap(10);
+		pane.setGridLinesVisible(false);
+		pane.setPadding(new Insets(10));
+		pane.setHgap(10);
+		pane.setVgap(10);
 
-        Label hotelListLabel = new Label("Hoteller:");
-        pane.add(hotelListLabel, 0, 0);
+		Label hotelListLabel = new Label("Hoteller:");
+		pane.add(hotelListLabel, 0, 0);
 
-        hotelList.getItems().setAll(Service.getHotels());
+		hotelList.getItems().setAll(Service.getHotels());
 
-        pane.add(hotelList, 0, 1);
+		pane.add(hotelList, 0, 1);
 
-        ChangeListener<Hotel> listener = (ov, oldHotel, newHotel) -> updateExtras();
-        hotelList.getSelectionModel().selectedItemProperty().addListener(listener);
+		ChangeListener<Hotel> listener = (ov, oldHotel, newHotel) -> updateExtras();
+		hotelList.getSelectionModel().selectedItemProperty().addListener(listener);
 
-        Label hotelExtrasLabel = new Label("Ekstra tilvalg");
-        pane.add(hotelExtrasLabel, 1, 0);
+		Label hotelExtrasLabel = new Label("Ekstra tilvalg");
+		pane.add(hotelExtrasLabel, 1, 0);
 
-        pane.add(hotelExtras, 1, 1);
-        hotelExtras.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		pane.add(hotelExtras, 1, 1);
+		hotelExtras.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-    }
+	}
 
-    private void updateExtras() {
-        Hotel hotel = hotelList.getSelectionModel().getSelectedItem();
-        hotelExtras.getItems().setAll(hotel.getExtras());
-    }
+	private void updateExtras() {
+		Hotel hotel = hotelList.getSelectionModel().getSelectedItem();
+		hotelExtras.getItems().setAll(hotel.getExtras());
+	}
 
-    public String getHotelInfo() {
-        Hotel hotel = hotelList.getSelectionModel().getSelectedItem();
-        if (hotel == null) {
-            return "";
-        }
+	public String getHotelInfo() {
+		Hotel hotel = hotelList.getSelectionModel().getSelectedItem();
+		if (hotel == null) {
+			return "";
+		}
 
-        String info = "Navn: " + hotel.getName() + "\n";
-        info += "Adresse: " + hotel.getAddress() + "\n";
-        info += "Enkeltværelse pris: " + hotel.getPriceSingle() + "\n";
-        info += "Dobbeltværelse pris: " + hotel.getPriceDouble();
+		String info = "Navn: " + hotel.getName() + "\n";
+		info += "Adresse: " + hotel.getAddress() + "\n";
+		info += "Enkeltværelse pris: " + hotel.getPriceSingle() + "\n";
+		info += "Dobbeltværelse pris: " + hotel.getPriceDouble();
 
-        ArrayList<Extra> extras = getExtras();
-        if (extras.size() > 0) {
-            info += "\nTilvalg:\n";
-            for (Extra extra : extras) {
-                info += "\t" + extra.getName() + ", pris: " + extra.getPrice() + "\n";
-            }
-        }
+		ArrayList<Extra> extras = getExtras();
+		if (extras.size() > 0) {
+			info += "\nTilvalg:\n";
+			for (Extra extra : extras) {
+				info += "\t" + extra.getName() + ", pris: " + extra.getPrice() + "\n";
+			}
+		}
 
-        return info;
-    }
+		return info;
+	}
 
-    public ArrayList<Extra> getExtras() {
-        return new ArrayList<>(hotelExtras.getSelectionModel().getSelectedItems());
-    }
+	public ArrayList<Extra> getExtras() {
+		return new ArrayList<>(hotelExtras.getSelectionModel().getSelectedItems());
+	}
 
-    public Hotel approve() {
-        return hotelList.getSelectionModel().getSelectedItem();
-    }
+	public Hotel approve() {
+		return hotelList.getSelectionModel().getSelectedItem();
+	}
 }

@@ -13,102 +13,102 @@ import javafx.scene.layout.GridPane;
 
 public class AttendantTab extends Tab {
 
-    private TextField txfName;
-    private TextField txfAddress;
-    private TextField txfNumber;
-    private TextField txfCompany;
-    private ListView<Attendant> attendants = new ListView<>();
-    private Attendant attendant;
+	private TextField txfName;
+	private TextField txfAddress;
+	private TextField txfNumber;
+	private TextField txfCompany;
+	private ListView<Attendant> attendants = new ListView<>();
+	private Attendant attendant;
 
-    public AttendantTab() {
-        super("Vælg deltager");
+	public AttendantTab() {
+		super("Vælg deltager");
 
-        GridPane pane = new GridPane();
-        pane.setGridLinesVisible(false);
-        pane.setPadding(new Insets(10));
-        pane.setHgap(10);
-        pane.setVgap(10);
+		GridPane pane = new GridPane();
+		pane.setGridLinesVisible(false);
+		pane.setPadding(new Insets(10));
+		pane.setHgap(10);
+		pane.setVgap(10);
 
-        setContent(pane);
-        setClosable(false);
+		setContent(pane);
+		setClosable(false);
 
-        Label nameLabel = new Label("Navn:");
-        pane.add(nameLabel, 0, 1);
+		Label nameLabel = new Label("Navn:");
+		pane.add(nameLabel, 0, 1);
 
-        txfName = new TextField();
-        txfName.setEditable(true);
-        pane.add(txfName, 1, 1);
+		txfName = new TextField();
+		txfName.setEditable(true);
+		pane.add(txfName, 1, 1);
 
-        Label addressLabel = new Label("Adresse:");
-        pane.add(addressLabel, 0, 2);
+		Label addressLabel = new Label("Adresse:");
+		pane.add(addressLabel, 0, 2);
 
-        txfAddress = new TextField();
-        txfAddress.setEditable(true);
-        pane.add(txfAddress, 1, 2);
+		txfAddress = new TextField();
+		txfAddress.setEditable(true);
+		pane.add(txfAddress, 1, 2);
 
-        Label tlfLabel = new Label("Tlf:");
-        pane.add(tlfLabel, 0, 3);
+		Label tlfLabel = new Label("Tlf:");
+		pane.add(tlfLabel, 0, 3);
 
-        txfNumber = new TextField();
-        txfNumber.setEditable(true);
-        pane.add(txfNumber, 1, 3);
+		txfNumber = new TextField();
+		txfNumber.setEditable(true);
+		pane.add(txfNumber, 1, 3);
 
-        Label companyLabel = new Label("Firma:");
-        pane.add(companyLabel, 0, 4);
+		Label companyLabel = new Label("Firma:");
+		pane.add(companyLabel, 0, 4);
 
-        txfCompany = new TextField();
-        txfCompany.setEditable(true);
-        pane.add(txfCompany, 1, 4);
+		txfCompany = new TextField();
+		txfCompany.setEditable(true);
+		pane.add(txfCompany, 1, 4);
 
-        Label attendantList = new Label("Gemte deltagere");
-        pane.add(attendantList, 2, 0);
-        pane.add(attendants, 2, 1, 1, 5);
+		Label attendantList = new Label("Gemte deltagere");
+		pane.add(attendantList, 2, 0);
+		pane.add(attendants, 2, 1, 1, 5);
 
-        ChangeListener<Attendant> listener = (ov, oldAttendant, newAttendant) -> PersonList();
-        attendants.getSelectionModel().selectedItemProperty().addListener(listener);
-        attendants.getItems().setAll(Service.getAttendants());
-    }
+		ChangeListener<Attendant> listener = (ov, oldAttendant, newAttendant) -> PersonList();
+		attendants.getSelectionModel().selectedItemProperty().addListener(listener);
+		attendants.getItems().setAll(Service.getAttendants());
+	}
 
-    public String getAttendantInfo() {
-        String info = "Navn: " + txfName.getText() + "\n";
-        info += "Adresse: " + txfAddress.getText() + "\n";
-        info += "Tlf. Nummer: " + txfNumber.getText() + "\n";
-        info += "Firma: " + txfCompany.getText() + "\n";
-        return info;
-    }
+	public String getAttendantInfo() {
+		String info = "Navn: " + txfName.getText() + "\n";
+		info += "Adresse: " + txfAddress.getText() + "\n";
+		info += "Tlf. Nummer: " + txfNumber.getText() + "\n";
+		info += "Firma: " + txfCompany.getText() + "\n";
+		return info;
+	}
 
-    /**
-     * The entered info has been approved, so create an attendant
-     *
-     * @return the new attendant
-     */
-    public Attendant approve() {
-        // Return an attendant selected from the list
-        if (attendant != null) {
-            return attendant;
-        }
+	/**
+	 * The entered info has been approved, so create an attendant
+	 *
+	 * @return the new attendant
+	 */
+	public Attendant approve() {
+		// Return an attendant selected from the list
+		if (attendant != null) {
+			return attendant;
+		}
 
-        // Verify the text fields
-        if (txfName.getText().isEmpty() || txfAddress.getText().isEmpty() || txfNumber.getText().isEmpty()) {
-            return null;
-        }
+		// Verify the text fields
+		if (txfName.getText().isEmpty() || txfAddress.getText().isEmpty() || txfNumber.getText().isEmpty()) {
+			return null;
+		}
 
-        // Create the attendant
-        attendant = Service.createAttendant(txfName.getText(), txfAddress.getText(), txfNumber.getText(),
-                txfCompany.getText());
+		// Create the attendant
+		attendant = Service.createAttendant(txfName.getText(), txfAddress.getText(), txfNumber.getText(),
+				txfCompany.getText());
 
-        return attendant;
-    }
+		return attendant;
+	}
 
-    private void PersonList() {
-        attendant = attendants.getSelectionModel().getSelectedItem();
-        this.txfName.setText(attendant.getName());
-        this.txfAddress.setText(attendant.getAddress());
-        this.txfNumber.setText(attendant.getTlfNumber());
-        if (attendant.getCompany() != null) {
-            this.txfCompany.setText(attendant.getCompany());
-        } else {
-            this.txfCompany.setText("");
-        }
-    }
+	private void PersonList() {
+		attendant = attendants.getSelectionModel().getSelectedItem();
+		this.txfName.setText(attendant.getName());
+		this.txfAddress.setText(attendant.getAddress());
+		this.txfNumber.setText(attendant.getTlfNumber());
+		if (attendant.getCompany() != null) {
+			this.txfCompany.setText(attendant.getCompany());
+		} else {
+			this.txfCompany.setText("");
+		}
+	}
 }
