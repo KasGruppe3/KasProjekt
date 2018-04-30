@@ -1,5 +1,7 @@
 package gui;
 
+import java.time.LocalDate;
+
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -48,7 +50,7 @@ public class KASBaseTab extends Tab {
         Label label = createLabel(text);
         pane.add(label, 0, row);
 
-        DatePicker dp = new DatePicker();
+        DatePicker dp = new DatePicker(LocalDate.now());
         pane.add(dp, 1, row);
 
         return dp;
