@@ -21,12 +21,6 @@ public class AttendantTab extends Tab {
         pane.setVgap(10);
 
         setContent(pane);
-        
-        Label attendantListLabel = new Label("Hoteller");
-		pane.add(attendantListLabel, 0, 0);
-		
-		ListView<Attendant> attendantList = new ListView<Attendant>();
-		pane.add(attendantList, 0, 1);
 		
 		Label nameLabel = new Label("Navn:");
 		pane.add(nameLabel, 1, 1);
