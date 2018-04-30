@@ -48,5 +48,9 @@ public class CreateAttendantWindow extends Stage{
         setScene(scene);
 
     }
+	
+	public void initContent(GridPane pane) {
+		
+	}
 
 }
