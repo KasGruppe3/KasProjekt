@@ -28,6 +28,7 @@ public class AdminWindow extends Stage {
         pane.getTabs().add(new ConferenceCreateTab());
         pane.getTabs().add(new HotelCreateTab());
         pane.getTabs().add(new FieldTripCreateTab());
+        pane.getTabs().add(new PrintListTab());
     }
 
 }
