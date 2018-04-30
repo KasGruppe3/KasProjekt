@@ -10,11 +10,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-public class FieldTripTab extends KASBaseTab {
+public class CompanioinTab extends KASBaseTab {
 	private TextField tripName, tripTime, tripDescription, tripPrice, tripLunch;
 	private ListView<FieldTrip> fieldTripList;
 
-    public FieldTripTab() {
+    public CompanioinTab() {
         super("Vælg udflugt for ledsager");
 
         GridPane pane = new GridPane();
