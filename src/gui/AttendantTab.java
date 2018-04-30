@@ -67,8 +67,6 @@ public class AttendantTab extends Tab {
         ChangeListener<Attendant> listener = (ov, oldAttendant, newAttendant) -> PersonList();
         attendants.getSelectionModel().selectedItemProperty().addListener(listener);
         
-
-        attendants.getItems().setAll(Service.getAttendants());
     }
 
     public String getAttendantInfo() {

@@ -64,6 +64,15 @@ public class HotelTab extends Tab {
         info += "Adresse: " + hotel.getAddress() + "\n";
         info += "Enkeltværelse pris: " + hotel.getPriceSingle() + "\n";
         info += "Dobbeltværelse pris: " + hotel.getPriceDouble();
+
+        ArrayList<Extra> extras = getExtras();
+        if (extras.size() > 0) {
+            info += "\nTilvalg:\n";
+            for (Extra extra : extras) {
+                info += "\t" + extra.getName() + ", pris: " + extra.getPrice() + "\n";
+            }
+        }
+
         return info;
     }
 
