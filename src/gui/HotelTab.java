@@ -64,4 +64,8 @@ public class HotelTab extends Tab {
         info += "Dobbeltværelse pris: " + hotel.getPriceDouble();
         return info;
     }
+
+    public Hotel approve() {
+        return hotelList.getSelectionModel().getSelectedItem();
+    }
 }
