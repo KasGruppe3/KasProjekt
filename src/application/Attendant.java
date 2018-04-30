@@ -85,6 +85,6 @@ public class Attendant extends Person {
     }
     @Override
     public String toString() {
-    	return "" + getName();
+    	return "" + getName() + getAddress() + getTlfNumber();
     }
 }
