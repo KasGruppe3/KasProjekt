@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -21,6 +22,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
@@ -31,54 +35,28 @@ import javafx.stage.Stage;
 
 public class AttendantWindow extends Stage{
 
-	public AttendantWindow(String title, Stage owner) {
-        this.initOwner(owner);
-        this.initStyle(StageStyle.UTILITY);
-        this.initModality(Modality.APPLICATION_MODAL);
-        this.setMinHeight(100);
-        this.setMinWidth(200);
-        this.setResizable(false);
-        
-        this.setTitle(title);
-        GridPane pane = new GridPane();
-        this.initContent(pane);
-        
-        Scene scene = new Scene(pane);
-        this.setScene(scene);
-    }
+	    public AttendantWindow(String title, Stage owner) {
+	        initOwner(owner);
+	        initStyle(StageStyle.UTILITY);
+	        initModality(Modality.APPLICATION_MODAL);
+	        setMinHeight(100);
+	        setMinWidth(200);
+	        setResizable(false);
 
-	private Button btnAdd;
-	private ListView<Attendant> lvwAttendants;
-	
-	
-	private void initContent(GridPane pane) {
-        pane.setGridLinesVisible(false);
-        pane.setPadding(new Insets(20));
-        pane.setHgap(10);
-        pane.setVgap(10);
-        
-        btnAdd = new Button("Add person");
-        pane.add(btnAdd, 1, 1);
-        btnAdd.setOnAction(event -> addPerson()); //- lav action.
-        
-        lvwAttendants = new ListView<>();
-        pane.add(lvwAttendants, 1, 2, 1, 2);
-        lvwAttendants.setPrefWidth(200);
-        lvwAttendants.setPrefHeight(200);
-        lvwAttendants.getItems().setAll(Service.getAttendants());
-        
-    }
-	
-	// -----------------------------------------------------
-			// Button actions
-	private void addPerson() {
-		Attendant attendant = lvwAttendants.getSelectionModel().getSelectedItem();
+	        setTitle("Attending a conferrence");
+	        TabPane pane = new TabPane();
+	        initContent(pane);
 
-        CreateAttendantWindow attWindow = new CreateAttendantWindow("Create Attendant", attendant);
-        attWindow.showAndWait();
+	        Scene scene = new Scene(pane);
+	        setScene(scene);
+	    }
 
-        // Wait for the modal dialog to close
+	    private void initContent(TabPane pane) {
+	        pane.getTabs().add(new AttendantTab());
+	        pane.getTabs().add(new ConferrenceTab());
+	        pane.getTabs().add(new HotelTab());
+	        pane.getTabs().add(new FieldTripTab());
+	        pane.getTabs().add(new ApproveTab());
+	    }
+
 	}
-	
-}
-
