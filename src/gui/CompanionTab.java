@@ -13,8 +13,10 @@ import javafx.scene.layout.GridPane;
 public class CompanionTab extends KASBaseTab {
 	private CheckBox cbxAttendant;
 	private TextField tripCompanionName, tripDescription, tripTime, tripPrice, tripLunch;
-	private ListView<FieldTrip> fieldTripList;
+	private ListView<FieldTrip> fieldTripList = new ListView<FieldTrip>();
+	
 
+	
     public CompanionTab() {
         super("Ledsagerinfo");
 
@@ -29,7 +31,7 @@ public class CompanionTab extends KASBaseTab {
         Label fieldTripLabel = new Label("Udflugter:");
 		pane.add(fieldTripLabel, 0, 1);
 		
-		ListView<FieldTrip> fieldTripList = new ListView<FieldTrip>();
+		
 		pane.add(fieldTripList, 0, 2);
 		
         
@@ -64,9 +66,6 @@ public class CompanionTab extends KASBaseTab {
         
 	}
 	private void selectedFieldTrip() {
-		this.updateControls();
-	}
-	public void updateControls() {
         FieldTrip fieldTrip = fieldTripList.getSelectionModel().getSelectedItem();
             tripDescription.setText(fieldTrip.getDescription());
             tripTime.setText("" + fieldTrip.getMeetingTime());
