@@ -92,7 +92,7 @@ public class PrintListTab extends KASBaseTab{
 	}
 	private void printFieldTripAttendeeList() {
 		if (conferenceList.getSelectionModel().getSelectedItem() != null) {
-		Service.printHotelList(conferenceList.getSelectionModel().getSelectedItem());
+		Service.printListFieldTrip(conferenceList.getSelectionModel().getSelectedItem());
 		} else {
 			alarm = new Alert(AlertType.WARNING);
 
