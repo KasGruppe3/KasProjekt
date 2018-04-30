@@ -1,17 +1,14 @@
 package gui;
 
 import application.FieldTrip;
-import application.Hotel;
 import application.Service;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Font;
 
 public class CompanionTab extends KASBaseTab {
 	private CheckBox cbxAttendant;
@@ -34,8 +31,7 @@ public class CompanionTab extends KASBaseTab {
 		
 		ListView<FieldTrip> fieldTripList = new ListView<FieldTrip>();
 		pane.add(fieldTripList, 0, 2);
-		ChangeListener<FieldTrip> listener = (ov, oldFieldTrip, newFieldTrip) -> this.selectedFieldTrip();
-		fieldTripList.getSelectionModel().selectedItemProperty().addListener(listener);
+		
         
 		GridPane attPane = new GridPane();
 		pane.add(attPane, 0, 0);
@@ -63,22 +59,19 @@ public class CompanionTab extends KASBaseTab {
         
         fieldTripList.getItems().setAll(Service.getFieldTrips());
         
+        ChangeListener<FieldTrip> listener = (ov, oldFieldTrip, newFieldTrip) -> this.selectedFieldTrip();
+		fieldTripList.getSelectionModel().selectedItemProperty().addListener(listener);
+        
 	}
 	private void selectedFieldTrip() {
 		this.updateControls();
 	}
 	public void updateControls() {
         FieldTrip fieldTrip = fieldTripList.getSelectionModel().getSelectedItem();
-        if (fieldTrip != null) {
-            tripDescription.setText(""+fieldTrip.getDescription());
+            tripDescription.setText(fieldTrip.getDescription());
             tripTime.setText("" + fieldTrip.getMeetingTime());
             tripPrice.setText("" + fieldTrip.getPrice());
             tripLunch.setText("" + fieldTrip.isHasLunch());
-        } else {
-        	tripDescription.clear();
-        	tripTime.clear();
-        	tripPrice.clear();
-        	tripLunch.clear();
-        }    
-    }
+        
+	}
 }
