@@ -1,22 +1,14 @@
 package gui;
 
 
-import application.Conference;
+
 import application.FieldTrip;
-import application.Service;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 public class FieldTripTab extends KASBaseTab {
 	private TextField tripName, tripTime, tripDescription, tripPrice, tripLunch;
