@@ -9,13 +9,21 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.control.TextField;
 
-public class ConferenceCreateTab extends Tab {
+public class ConferenceCreateTab extends KASBaseTab {
+
+    private TextField fieldName;
+    private TextField fieldLocation;
+    private DatePicker fieldDatePicker;
+    private TextField fieldDuration;
+    private TextField fieldPrice;
+    private Label fieldErrMsg;
 
     public ConferenceCreateTab() {
         super("Opret Konference");
@@ -25,60 +33,54 @@ public class ConferenceCreateTab extends Tab {
         pane.setPadding(new Insets(20));
         pane.setHgap(50);
         pane.setVgap(10);
-        pane.setAlignment(Pos.CENTER_RIGHT);
 
-        addInfo(pane, 0, "Navn");
-        addInfo(pane, 1, "Lokation");
-        addInfoDate(pane, 2, "Dato");
-        addInfo(pane, 3, "Antal dage");
-        addInfo(pane, 4, "Pris");
+        fieldName = addTextField(pane, 0, "Navn");
+        fieldLocation = addTextField(pane, 1, "Lokation");
+        fieldDatePicker = addDatePicker(pane, 2, "Dato");
+        fieldDuration = addTextField(pane, 3, "Antal dage");
+        fieldPrice = addTextField(pane, 4, "Pris");
+        createMessageField(pane, 1, 5, 2);
+
+        // Reset error message when values change
+        fieldDuration.setOnKeyPressed(event -> hideMessage());
+        fieldPrice.setOnKeyPressed(event -> hideMessage());
 
         // Ok knap
         Button btn = new Button("Ok");
         btn.setFont(Font.font("Arial", 16));
         btn.setOnAction(event -> buttonOk());
-        pane.add(btn, 1, 5);
+        pane.add(btn, 1, 6);
 
         setContent(pane);
     }
 
     private Object buttonOk() {
+        String name = fieldName.getText();
+        if (name.isEmpty()) {
 
+        }
+
+        String location = fieldLocation.getText();
+        LocalDate date = fieldDatePicker.getValue();
+        int timeSpan;
+        double price;
+        try {
+            timeSpan = Integer.parseInt(fieldDuration.getText());
+        } catch (NumberFormatException nfe) {
+            // Ya done goofed
+            showError("Ugyldigt værdi af antal dage");
+            return null;
+        }
+        try {
+            price = Double.parseDouble(fieldPrice.getText());
+        } catch (NumberFormatException nfe) {
+            // Ya done goofed
+            showError("Ugyldig pris");
+            return null;
+        }
+
+        Service.createConference(name, location, date, timeSpan, price);
+        showInformation("Konference oprettet!");
         return null;
     }
-
-    private void addInfo(GridPane pane, int row, String text) {
-        // Set up the label
-        Label label = createLabel(text);
-        pane.add(label, 0, row);
-
-        // Set up the editable field
-        TextField txf = new TextField();
-        txf = new TextField();
-        // txf.setMaxWidth(300);
-        txf.setEditable(true);
-        txf.setFocusTraversable(true);
-        // txf.setFont(font);
-        pane.add(txf, 1, row);
-    }
-
-    private void addInfoDate(GridPane pane, int row, String text) {
-        // Set up the label
-        Label label = createLabel(text);
-        pane.add(label, 0, row);
-
-        DatePicker dp = new DatePicker();
-        pane.add(dp, 1, row);
-    }
-
-    private Label createLabel(String text) {
-        Label label = new Label();
-        label.setText(text);
-        // label.setMaxWidth(300);
-        label.setMinWidth(150);
-        return label;
-    }
-
-    // A larger font used for drawing the dies values
-    Font font = Font.font("Arial", FontWeight.BOLD, 16);
 }
