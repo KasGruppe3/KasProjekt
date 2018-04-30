@@ -8,6 +8,8 @@ import javafx.scene.control.TabPane;
 
 public class AdminWindow extends Stage {
 
+    ConferenceCreateTab cct = new ConferenceCreateTab();
+
     public AdminWindow(String title, Stage owner) {
         initOwner(owner);
         initStyle(StageStyle.UTILITY);
@@ -25,9 +27,9 @@ public class AdminWindow extends Stage {
     }
 
     private void initContent(TabPane pane) {
-        pane.getTabs().add(new ConferenceCreateTab());
+        pane.getTabs().add(cct);
         pane.getTabs().add(new HotelCreateTab());
-        pane.getTabs().add(new FieldTripCreateTab());
+        pane.getTabs().add(new FieldTripCreateTab(cct));
         pane.getTabs().add(new PrintListTab());
     }
 

@@ -2,6 +2,7 @@ package gui;
 
 import java.time.LocalDate;
 
+import application.Conference;
 import application.Service;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ import javafx.scene.text.Font;
 
 public class ConferenceCreateTab extends KASBaseTab {
 
+    private Conference conference;
     private TextField fieldName;
     private TextField fieldLocation;
     private DatePicker fieldDatePicker;
@@ -81,7 +83,11 @@ public class ConferenceCreateTab extends KASBaseTab {
             return;
         }
 
-        Service.createConference(name, location, date, timeSpan, price);
+        conference = Service.createConference(name, location, date, timeSpan, price);
         showInformation("Konference oprettet!");
+    }
+
+    public Conference getConference() {
+        return conference;
     }
 }

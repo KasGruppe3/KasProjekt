@@ -3,6 +3,7 @@ package gui;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import application.FieldTrip;
 import application.Service;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -19,9 +20,11 @@ public class FieldTripCreateTab extends KASBaseTab {
     private TextField fieldTime;
     private TextField fieldPrice;
     private CheckBox fieldLunch;
+    private ConferenceCreateTab cct;
 
-    public FieldTripCreateTab() {
+    public FieldTripCreateTab(ConferenceCreateTab cct) {
         super("Opret Udflugt");
+        this.cct = cct;
 
         GridPane pane = new GridPane();
         pane.setGridLinesVisible(false);
@@ -46,6 +49,11 @@ public class FieldTripCreateTab extends KASBaseTab {
     }
 
     private void buttonOk() {
+        if (cct.getConference() == null) {
+            showError("Opret en konference først!");
+            return;
+        }
+
         LocalDate date = fieldDatePicker.getValue();
         if (date.isBefore(LocalDate.now())) {
             showError("Ugyldig dato!");
@@ -81,7 +89,8 @@ public class FieldTripCreateTab extends KASBaseTab {
         }
 
         boolean hasLunch = fieldLunch.isSelected();
-        Service.createFieldTrip(date, LocalTime.of(meetingTime, 0), description, price, hasLunch);
+        FieldTrip fieldTrip = Service.createFieldTrip(date, LocalTime.of(meetingTime, 0), description, price, hasLunch);
+        cct.getConference().addFieldTrip(fieldTrip);
         showInformation("Udflugt oprettet!");
     }
 }
