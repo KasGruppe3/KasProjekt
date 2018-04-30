@@ -3,7 +3,6 @@ package gui;
 import javafx.scene.control.TextField;
 
 import application.Attendant;
-import application.Hotel;
 import application.Service;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
@@ -68,6 +67,8 @@ public class AttendantTab extends Tab {
         ChangeListener<Attendant> listener = (ov, oldAttendant, newAttendant) -> PersonList();
         attendants.getSelectionModel().selectedItemProperty().addListener(listener);
         
+
+        attendants.getItems().setAll(Service.getAttendants());
     }
 
     public String getAttendantInfo() {
