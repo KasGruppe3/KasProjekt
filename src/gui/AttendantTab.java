@@ -18,6 +18,7 @@ public class AttendantTab extends Tab {
     private TextField txfNumber;
     private TextField txfCompany;
     private ListView<Attendant> attendants = new ListView<>();
+    private Attendant attendant;
 
     public AttendantTab() {
         super("Vælg deltager");
@@ -71,7 +72,7 @@ public class AttendantTab extends Tab {
     public String getAttendantInfo() {
         String info = "Navn: " + txfName.getText() + "\n";
         info += "Adresse: " + txfAddress.getText() + "\n";
-        info += "Tlf. Nummer: +" + txfNumber.getText() + "\n";
+        info += "Tlf. Nummer: " + txfNumber.getText() + "\n";
         info += "Firma: " + txfCompany.getText() + "\n";
         return info;
     }
@@ -82,21 +83,32 @@ public class AttendantTab extends Tab {
      * @return the new attendant
      */
     public Attendant approve() {
+        // Return an attendant selected from the list
+        if (attendant != null) {
+            return attendant;
+        }
+
+        // Verify the text fields
         if (txfName.getText().isEmpty() || txfAddress.getText().isEmpty() || txfNumber.getText().isEmpty()) {
             return null;
         }
 
-        return Service.createAttendant(txfName.getText(), txfAddress.getText(), "+" + txfNumber.getText(),
+        // Create the attendant
+        attendant = Service.createAttendant(txfName.getText(), txfAddress.getText(), txfNumber.getText(),
                 txfCompany.getText());
+
+        return attendant;
     }
 
     private void PersonList() {
-        Attendant attendant = attendants.getSelectionModel().getSelectedItem();
+        attendant = attendants.getSelectionModel().getSelectedItem();
         this.txfName.setText(attendant.getName());
         this.txfAddress.setText(attendant.getAddress());
         this.txfNumber.setText(attendant.getTlfNumber());
         if (attendant.getCompany() != null) {
             this.txfCompany.setText(attendant.getCompany());
+        } else {
+            this.txfCompany.setText("");
         }
     }
 }
