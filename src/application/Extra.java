@@ -1,15 +1,15 @@
 package application;
 
 public class Extra {
-    private String name;
-    private double price;
-    private String description;
-    
-    public Extra (String name, double price, String description) {
-    	this.name = name;
-    	this.price = price;
-    	this.description = description;
-    }
+	private String name;
+	private double price;
+	private String description;
+
+	public Extra (String name, double price, String description) {
+		this.name = name;
+		this.price = price;
+		this.description = description;
+	}
 
 	public String getName() {
 		return name;
@@ -34,11 +34,11 @@ public class Extra {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Tilvalg navn: " + this.name + ", pris: " + this.price + ", beskrivelse: " + this.description;
 	}
-    
-	
+
+
 }
