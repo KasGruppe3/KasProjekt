@@ -1,10 +1,13 @@
 package gui;
 
+import java.time.LocalDate;
+
 import application.Conference;
 import application.Hotel;
 import application.Service;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
@@ -20,6 +23,8 @@ public class ConferrenceTab extends KASBaseTab {
     private TextField txfPris = new TextField();
     TextField txfStartDate = new TextField();
     private TextField txfTimeSpan = new TextField();
+
+    private CheckBox cbxSpeaker;
 
     public ConferrenceTab() {
         super("Vælg konferrence");
@@ -75,6 +80,8 @@ public class ConferrenceTab extends KASBaseTab {
         txfTimeSpan.setEditable(false);
         pane.add(txfTimeSpan, 2, 4);
 
+        cbxSpeaker = addCheckBox(pane, 1, 5, "Taler?");
+
         ChangeListener<Conference> listener = (ov, oldConferrence, newConferrence) -> UpdateTextFields();
         conferenceList.getSelectionModel().selectedItemProperty().addListener(listener);
     }
@@ -95,5 +102,25 @@ public class ConferrenceTab extends KASBaseTab {
         info += "Antal dage: " + txfTimeSpan.getText() + "\n";
         info += "Pris: " + txfPris.getText();
         return info;
+    }
+
+    public LocalDate getArrivalDate() {
+        return LocalDate.now();
+    }
+
+    public LocalDate getLeavingDate() {
+        return LocalDate.now();
+    }
+
+    public String getComment() {
+        return "";
+    }
+
+    public boolean isSpeaker() {
+        return cbxSpeaker.isSelected();
+    }
+
+    public Conference approve() {
+        return conferenceList.getSelectionModel().getSelectedItem();
     }
 }

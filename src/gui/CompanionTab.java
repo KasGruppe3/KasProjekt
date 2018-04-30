@@ -1,5 +1,7 @@
 package gui;
 
+import java.util.ArrayList;
+
 import application.FieldTrip;
 import application.Service;
 import javafx.beans.value.ChangeListener;
@@ -91,5 +93,13 @@ public class CompanionTab extends KASBaseTab {
         }
 
         return info;
+    }
+
+    public String approve() {
+        return tripCompanionName.getText();
+    }
+
+    public ArrayList<FieldTrip> getFieldTrips() {
+        return new ArrayList<>(fieldTripList.getSelectionModel().getSelectedItems());
     }
 }

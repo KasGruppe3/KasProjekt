@@ -1,5 +1,7 @@
 package gui;
 
+import java.util.ArrayList;
+
 import application.Extra;
 import application.Hotel;
 import application.Service;
@@ -63,6 +65,10 @@ public class HotelTab extends Tab {
         info += "Enkeltværelse pris: " + hotel.getPriceSingle() + "\n";
         info += "Dobbeltværelse pris: " + hotel.getPriceDouble();
         return info;
+    }
+
+    public ArrayList<Extra> getExtras() {
+        return new ArrayList<>(hotelExtras.getSelectionModel().getSelectedItems());
     }
 
     public Hotel approve() {
