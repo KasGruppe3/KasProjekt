@@ -81,6 +81,12 @@ public class Hotel {
         extraOffers.add(extra);
         return extra;
     }
+    
+    public void addExtras(ArrayList<Extra> extraList){
+    	for (Extra e : extraList) {
+    		extraOffers.add(e);
+    	}
+    }
 
     public ArrayList<Extra> getExtras() {
         return new ArrayList<>(extraOffers);
