@@ -45,13 +45,13 @@ public class KASBaseTab extends Tab {
         return txf;
     }
 
-    protected DatePicker addDatePicker(GridPane pane, int row, String text) {
+    protected DatePicker addDatePicker(GridPane pane, int columnStart, int row, String text) {
         // Set up the label
         Label label = createLabel(text);
-        pane.add(label, 0, row);
+        pane.add(label, columnStart, row);
 
         DatePicker dp = new DatePicker(LocalDate.now());
-        pane.add(dp, 1, row);
+        pane.add(dp, columnStart + 1, row);
 
         return dp;
     }
