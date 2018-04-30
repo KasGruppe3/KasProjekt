@@ -18,7 +18,7 @@ public class AttendantTab extends Tab {
     private TextField txfAddress;
     private TextField txfNumber;
     private TextField txfCompany;
-    private ListView<Attendant> attendants = new ListView<Attendant>();
+    private ListView<Attendant> attendants = new ListView<>();
 
     public AttendantTab() {
         super("Vælg deltager");
@@ -59,21 +59,20 @@ public class AttendantTab extends Tab {
         txfCompany = new TextField();
         txfCompany.setEditable(true);
         pane.add(txfCompany, 1, 4);
-        
-        
+
         Label attendantList = new Label("Gemte deltagere");
         pane.add(attendantList, 2, 0);
         pane.add(attendants, 2, 1, 1, 5);
-        
+
         ChangeListener<Attendant> listener = (ov, oldAttendant, newAttendant) -> PersonList();
         attendants.getSelectionModel().selectedItemProperty().addListener(listener);
-        
+
     }
 
     public String getAttendantInfo() {
         String info = "Navn: " + txfName.getText() + "\n";
         info += "Adresse: " + txfAddress.getText() + "\n";
-        info += "Tlf. Nummer: +" + txfNumber.getText() + "\n";
+        info += "Tlf. Nummer: " + txfNumber.getText() + "\n";
         info += "Firma: " + txfCompany.getText() + "\n";
         return info;
     }
@@ -84,17 +83,21 @@ public class AttendantTab extends Tab {
      * @return the new attendant
      */
     public Attendant approve() {
-        return Service.createAttendant(txfName.getText(), txfAddress.getText(),
-                "+" + txfNumber.getText(), txfCompany.getText());
+        if (txfName.getText().isEmpty() || txfAddress.getText().isEmpty() || txfNumber.getText().isEmpty()) {
+            return null;
+        }
+
+        return Service.createAttendant(txfName.getText(), txfAddress.getText(), "+" + txfNumber.getText(),
+                txfCompany.getText());
     }
-    
+
     private void PersonList() {
         Attendant attendant = attendants.getSelectionModel().getSelectedItem();
         this.txfName.setText(attendant.getName());
         this.txfAddress.setText(attendant.getAddress());
         this.txfNumber.setText(attendant.getTlfNumber());
-        if (attendant.getCompany() != null) {        	
-        	this.txfCompany.setText(attendant.getCompany());
+        if (attendant.getCompany() != null) {
+            this.txfCompany.setText(attendant.getCompany());
         }
     }
 }
