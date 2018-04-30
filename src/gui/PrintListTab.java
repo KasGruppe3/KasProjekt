@@ -6,6 +6,8 @@ import application.Hotel;
 import application.Service;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -18,7 +20,7 @@ public class PrintListTab extends KASBaseTab{
 //	private ListView<> conferenceAttendees = new ListView<>();
 	private Button btnUpdateConference;
 	private Button btnPrintConference, btnPrintHotel, btnPrintFieldTrip;
-	
+	private Alert alarm;	
 	
 	public PrintListTab() {
         super("Udprint lister");
@@ -59,14 +61,46 @@ public class PrintListTab extends KASBaseTab{
 		printPane.add(btnPrintFieldTrip, 0, 3);
 		btnPrintFieldTrip.setOnAction(event -> printFieldTripAttendeeList());
 		
+		
+		
 }
 	private void printAttendeeList() {
+		if (conferenceList.getSelectionModel().getSelectedItem() != null) {
 		Service.printConferenceList(conferenceList.getSelectionModel().getSelectedItem());
+		} else {
+			alarm = new Alert(AlertType.WARNING);
+
+            alarm.setTitle("Ingen konference valgt");
+            alarm.setHeaderText("");
+            alarm.setContentText("Du har ikke valgt en konferrence.");
+
+            alarm.showAndWait();
+		}
 	}
 	private void printHotelList() {
+		if (conferenceList.getSelectionModel().getSelectedItem() != null) {
 		Service.printHotelList(conferenceList.getSelectionModel().getSelectedItem());
+		} else {
+			alarm = new Alert(AlertType.WARNING);
+
+            alarm.setTitle("Ingen konference valgt");
+            alarm.setHeaderText("");
+            alarm.setContentText("Du har ikke valgt en konferrence.");
+
+            alarm.showAndWait();
+		}
 	}
 	private void printFieldTripAttendeeList() {
+		if (conferenceList.getSelectionModel().getSelectedItem() != null) {
 		Service.printHotelList(conferenceList.getSelectionModel().getSelectedItem());
+		} else {
+			alarm = new Alert(AlertType.WARNING);
+
+            alarm.setTitle("Ingen konference valgt");
+            alarm.setHeaderText("");
+            alarm.setContentText("Du har ikke valgt en konferrence.");
+
+            alarm.showAndWait();
+		}
 	}
 }
