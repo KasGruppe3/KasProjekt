@@ -29,10 +29,10 @@ public class KASBaseTab extends Tab {
         setClosable(false);
     }
 
-    protected TextField addTextField(GridPane pane, int row, String text) {
+    protected TextField addTextField(GridPane pane, int columnStart, int row, String text) {
         // Set up the label
         Label label = createLabel(text);
-        pane.add(label, 0, row);
+        pane.add(label, columnStart, row);
 
         // Set up the editable field
         TextField txf = new TextField();
@@ -40,7 +40,7 @@ public class KASBaseTab extends Tab {
         txf.setEditable(true);
         txf.setFocusTraversable(true);
         // txf.setFont(font);
-        pane.add(txf, 1, row);
+        pane.add(txf, columnStart + 1, row);
 
         return txf;
     }
