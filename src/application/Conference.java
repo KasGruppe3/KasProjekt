@@ -134,5 +134,9 @@ public class Conference {
     public void removeFieldTrip(FieldTrip fieldTrip) {
         fieldTrips.remove(fieldTrip);
     }
+    @Override
+    public String toString() {
+    	return this.name;
+    }
 
 }
